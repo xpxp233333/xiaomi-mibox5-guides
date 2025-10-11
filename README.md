@@ -63,3 +63,9 @@ fastboot flashing unlock
   - 任意一个 Serial 客户端，如 [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) /  [WindTerm](https://github.com/kingToolbox/WindTerm)
   - [ADB & Fastboot 工具](https://developer.android.com/tools/releases/platform-tools)
   - **保证相关工具 / 驱动运行正常**
+
+### Test
+<details>
+<summary>查看 eMMC 特写</summary>
+![eMMC closeup](./images/device/emmc.png)
+</details>
