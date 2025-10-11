@@ -64,8 +64,15 @@ fastboot flashing unlock
   - [ADB & Fastboot 工具](https://developer.android.com/tools/releases/platform-tools)
   - **保证相关工具 / 驱动运行正常**
 
-### Test
+###TEST
+
+## EMMC
+
+### 长江存储 YMEC6A2TB1A2C3
 <details>
+
 <summary>查看 eMMC 特写</summary>
-![eMMC closeup](./images/device/emmc.png)
+
+<img height="500" src="./images/device/emmc.png">
+
 </details>
