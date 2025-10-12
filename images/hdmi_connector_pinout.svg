@@ -1,0 +1,29 @@
+<svg width="2206" height="873" xmlns="http://www.w3.org/2000/svg">
+
+<g stroke-width="10" stroke="#000">
+<path d="m180 80c-57 0-100 48-100 103v301c0 55 35 85 64 96 43 13 89 31 114 59l102 116c19 22 48 38 84 38h1318c36 0 65-17 84-38l102-116c34-37 66-42 114-59 29-10 64-40 64-96v-301c0-55-42-103-100-103z" fill="#fff" stroke-width="60"/>
+<path d="m450 491c-8 0-12-1-20-3l-78-26c-6-2-10-9-10-15v-56c0-6 8-12 14-12h1495c6 0 14 6 14 12v56c0 6-4 13-10 15l-78 26c-8 3-12 3-20 3h-1305z" fill="#b3b3b3"/>
+<path d="m1630 467h73v37h-73zm-141 0h73v37h-73zm-141 0h73v37h-73zm-141 0h73v37h-73zm-141 0h73v37h-73zm-141 0h73v37h-73zm-141 0h73v37h-73zm-141 0h73v37h-73zm-141 0h73v37h-73zm1201-102h73v37h-73zm-141 0h73v37h-73zm-141 0h73v37h-73zm-141 0h73v37h-73zm-141 0h73v37h-73zm-141 0h73v37h-73zm-141 0h73v37h-73zm-141 0h73v37h-73zm-141 0h73v37h-73zm-141 0h73v37h-73z" fill="#fcee21"/>
+</g>
+<text font-family="Arial" font-size="80px">
+<tspan x="1722" y="334">1</tspan>
+<tspan x="1577" y="333">3</tspan>
+<tspan x="1436" y="333">5</tspan>
+<tspan x="1294" y="334">7</tspan>
+<tspan x="1153" y="333">9</tspan>
+<tspan x="995" y="334">11</tspan>
+<tspan x="845" y="333">13</tspan>
+<tspan x="703" y="333">15</tspan>
+<tspan x="562" y="334">17</tspan>
+<tspan x="420" y="333">19</tspan>
+<tspan x="488" y="593">18</tspan>
+<tspan x="630" y="593">16</tspan>
+<tspan x="772" y="593">14</tspan>
+<tspan x="913" y="593">12</tspan>
+<tspan x="1055" y="593">10</tspan>
+<tspan x="1221" y="593">8</tspan>
+<tspan x="1363" y="593">6</tspan>
+<tspan x="1506" y="593">4</tspan>
+<tspan x="1647" y="593">2</tspan>
+</text>
+</svg>
