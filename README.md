@@ -1,5 +1,19 @@
 # 小米盒子 5 (MOB2MB-5P)
 
+> [!NOTE]
+> ### 注意
+> - 本文档中的设备信息基于作者自有设备及官方公开资料整理。
+> - 不同批次或渠道的设备在系统版本、硬件或外观上可能存在差异，相关内容仅供参考，请以实际情况为准。
+
+## 目录
+- [规格参数](#规格参数)
+- [额外信息](#额外信息)
+- [设备外观](#设备外观-来自于官方)
+- [主板照片](#主板照片)
+- [内部部分元器件特写](#内部部分元器件特写)
+- [UART连接信息](#uart连接信息)
+- [刷机 / 救砖教程](#刷机--救砖教程-wip)
+
 ## 规格参数
 - 操作系统：Xiaomi HyperOS (Android 14)
 - SoC：Amlogic S905X5M
@@ -14,9 +28,19 @@
 - USB 2.0 x 1
 - HDMI x 1
 
-_*注：规格参数信息来自于官方_
+_※ 说明：规格参数信息来自于官方_
 
-## 外观 (来自于官方)
+## 额外信息
+- 设备代号：darkknight
+- 系统内显示型号：MiTV-AZFU0
+- 出厂系统版本：UD2A.240505.001.W1.OS2.0.7.0.UZFAABX
+- 出厂内核版本：5.15.153-android14-11-gf80308c320bc-abOS2.0.7.0.UZFAABX
+- 出厂安全补丁级别：2024-11-01
+- 出厂Bootloader版本：01.01.240807.211528
+
+_※ 说明：此处的信息均来自于作者自己的设备，不同生产批次或销售渠道的设备，其预装的系统版本可能存在差异，相关内容仅供参考，请以实际情况为准。_
+
+## 设备外观 (来自于官方)
 
 <details>
 
@@ -24,15 +48,50 @@ _*注：规格参数信息来自于官方_
 
 <img height="1000" src="./images/device/mibox5.png">
 
-_*注：由于官方并未提供 小米盒子5 的接口照片，因此接口照片来自于与 小米盒子5 外观一样的 Xiaomi TV Box S (3rd Gen)，仅供参考，请以实物为准。_
+_※ 说明：由于官方并未提供 小米盒子5 的接口照片，因此接口照片来自于与 小米盒子5 外观一样的 Xiaomi TV Box S (3rd Gen)，照片仅供参考，请以实物为准。_
 </details>
 
-## 主板照片 [WIP]
+## 主板照片
 
+### 主板正面 (屏蔽罩未移除)
+<details>
+
+<summary>点击此处来查看照片</summary>
+
+<img height="1000" src="./images/device/mainboard_front_shield.png">
+
+</details>
+
+### 主板正面
+<details>
+
+<summary>点击此处来查看照片</summary>
+
+<img height="1000" src="./images/device/mainboard_front.png">
+
+</details>
+
+### 主板反面 (屏蔽罩未移除)
+<details>
+
+<summary>点击此处来查看照片</summary>
+
+<img height="1000" src="./images/device/mainboard_back_shield.png">
+
+</details>
+
+### 主板反面
+<details>
+
+<summary>点击此处来查看照片</summary>
+
+<img height="1000" src="./images/device/mainboard_back.png">
+
+</details>
 
 ## 内部部分元器件特写
 
-### SOC：晶晨 S905X5M
+### SoC：晶晨 S905X5M
 <details>
 
 <summary>查看 SOC 特写</summary>
@@ -41,7 +100,7 @@ _*注：由于官方并未提供 小米盒子5 的接口照片，因此接口照
 
 </details>
 
-### EMMC：长江存储 YMEC6A2TB1A2C3
+### eMMC：长江存储 YMEC6A2TB1A2C3
 <details>
 
 <summary>查看 eMMC 特写</summary>
@@ -69,7 +128,7 @@ _*注：由于官方并未提供 小米盒子5 的接口照片，因此接口照
 </details>
 
 ## UART连接信息
-小米盒子 5 的 UART 信号被厂商引到了 HDMI 接口的引脚中，因此无需拆机即可通过 HDMI免焊头 实现连接。
+小米盒子 5 的 UART 信号被厂商引到了 HDMI 接口的引脚中，因此无需拆机即可通过 HDMI免焊头 来实现连接。
 
 <img height="200" src="./images/hdmi_connector_pinout.svg">
 
@@ -95,11 +154,31 @@ _*注：由于官方并未提供 小米盒子5 的接口照片，因此接口照
 > [!NOTE]
 > ### 注意
 > - 如果出现了乱码的情况，请保证你的设备已良好接地，并且检查波特率是否为921600。
-> - 建议在通电前检查 HDMI 插头的引脚对应，避免短路。
-> - 使用常规的 HDMI 线缆也可以将 UART 信号引出，但该方法不仅过程麻烦，还会永久损坏一根线缆，在此文档中不做介绍。
+> - 建议在通电前检查相关线缆是否正确连接，以避免损坏设备。
+> - 使用常规的 HDMI 线缆也可以将 UART 信号引出，但该方法不仅过程麻烦，还会永久损坏一根线缆，因此推荐通过使用 HDMI免焊头 来进行连接。
 
-_*注：此部分使用的图片来自于 [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:HDMI_Connector_Pinout.svg)。_
+_※ 说明：_
+- _此部分使用的图片来自于 [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:HDMI_Connector_Pinout.svg)_
+- _UART 引脚信息参考自 [XDA上的这篇帖子](https://xdaforums.com/t/solved-help-debricking-mi-box-s-2nd-gen-mdz-28-aa.4655643/)，该帖面向于 Xiaomi TV Box S (2nd Gen)，因此请注意与 小米盒子5 的差异。_
+- _本文作者已在 小米盒子5 的实机上完成相关测试，上述连接参数均基于实测结果。_
 
-## 官方宣传图 [WIP]
+## 刷机 / 救砖教程 [WIP]
 
+> [!CAUTION]
+> 此章节暂未完成，目前不具备任何参考价值，请无视
 
+> [!CAUTION]
+> ### 风险提示
+> 下方列出的部分教程涉及设备底层操作（如解锁 Bootloader、修改系统分区等），存在较高风险，可能导致：
+> - 设备永久性变砖
+> - 硬件损坏
+> - 失去官方保修资格
+>
+> 请确保你已充分了解相关风险，并自愿承担责任。  
+> 作者对因操作不当导致的任何后果概不负责。
+
+### 教程目录
+- [如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定](unlock_bootloader.md)
+- [如何通过 DSU 来备份 小米盒子5 的 boot 分区并对其进行 root](./)
+- [如何在系统无法启动的情况下通过 UART 来进入 Fastboot 模式](./)
+- [如何通过 DSU 来让 小米盒子5 运行 小米盒子S (第三代) 的 Google TV 系统](./)
