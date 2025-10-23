@@ -180,6 +180,6 @@ _※ 说明：_
 ### 教程目录
 - [如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定](unlock_bootloader.md)
 - [如何通过 DSU 来备份 小米盒子 5 (MOB2MB-5P) 的系统镜像](backup.md)
-- [如何 Root 小米盒子 5 (MOB2MB-5P) (WIP)](./)
+- [如何 Root 小米盒子 5 (MOB2MB-5P)](root.md)
 - [如何在系统无法启动的情况下通过 UART 来进入 Fastboot 模式 (WIP)](./)
 - [如何通过 DSU 来让 小米盒子5 运行 小米盒子S (第三代) 的 Google TV 系统 (WIP)](./)
