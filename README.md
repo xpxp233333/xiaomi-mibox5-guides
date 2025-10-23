@@ -12,7 +12,7 @@
 - [主板照片](#主板照片)
 - [内部部分元器件特写](#内部部分元器件特写)
 - [UART连接信息](#uart连接信息)
-- [刷机 / 救砖教程](#刷机--救砖教程-wip)
+- [刷机 / 救砖教程](#刷机--救砖教程)
 
 ## 规格参数
 - 操作系统：Xiaomi HyperOS (Android 14)
@@ -163,10 +163,7 @@ _※ 说明：_
 - _UART 引脚信息参考自 [XDA上的这篇帖子](https://xdaforums.com/t/solved-help-debricking-mi-box-s-2nd-gen-mdz-28-aa.4655643/)，该帖面向于 Xiaomi TV Box S (2nd Gen)，因此请注意与 小米盒子5 的差异。_
 - _本文作者已在 小米盒子5 的实机上完成相关测试，上述连接参数均基于实测结果。_
 
-## 刷机 / 救砖教程 [WIP]
-
-> [!CAUTION]
-> 此章节暂未完成，目前不具备任何参考价值，请无视
+## 刷机 / 救砖教程
 
 > [!CAUTION]
 > ### 风险提示
@@ -181,5 +178,4 @@ _※ 说明：_
 - [如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定](unlock_bootloader.md)
 - [如何通过 DSU 来备份 小米盒子 5 (MOB2MB-5P) 的系统镜像](backup.md)
 - [如何 Root 小米盒子 5 (MOB2MB-5P)](root.md)
-- [如何在系统无法启动的情况下通过 UART 来进入 Fastboot 模式 (WIP)](./)
-- [如何通过 DSU 来让 小米盒子5 运行 小米盒子S (第三代) 的 Google TV 系统 (WIP)](./)
+- [如何在系统无法启动的情况下通过 UART 来进入 小米盒子 5 (MOB2MB-5P) 的 Fastboot 模式 (WIP)](./)
