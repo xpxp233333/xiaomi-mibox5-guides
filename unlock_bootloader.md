@@ -6,6 +6,10 @@
 > - 硬件损坏
 > - 设备永久性变砖
 > - 失去官方保修资格
+> - 无法正常接收或安装 OTA 系统更新
+> - 某些应用检测到设备已解锁后拒绝运行
+> - DRM 失效 (例如 Widevine 安全等级降级)
+> - 某些应用检测到 DRM 失效后拒绝播放受保护内容
 > 
 > 在非必要情况下不建议执行此操作，如你选择继续则代表你已经充分了解并可自行承担全部风险，并自愿承担责任，作者对此操作产生的任何后果概不负责。
 
@@ -39,6 +43,8 @@ _※ 说明: 仅当你希望重新锁定 Bootloader 时，才需要阅读 [重�
 > 本教程仅在上述版本中进行过完整测试。  
 >
 > 若你的设备信息与上表**存在差异**，则部分步骤可能会不适用或导致设备异常，请在充分了解风险后谨慎操作。
+>
+> 此教程中出现的所有命令输出示例仅供参考，请以实际情况为准。
 
 ## 前置要求
 - 小米盒子 5 (MOB2MB-5P) 一台（未解除 Bootloader 锁定）
@@ -57,10 +63,19 @@ _※ 说明：_
 
 ## 启用 ADB 调试 功能
 1. 打开“设置”应用 (包名: `com.xiaomi.mitv.settings`)
+
+   <img height="300" src="./images/screenshots/applist_settings.png">
+
 2. 在“设置”应用中，切换到`关于本机`菜单。
 3. 找到`产品型号`选项并连续点击多次，直到设备提示“您现在处于开发者模式”。
+
+   <img height="300" src="./images/screenshots/app_settings_adb_1.png">
+
 4. 切换到`账号与安全`菜单。
 5. 启用`ADB 调试`选项。
+
+   <img height="300" src="./images/screenshots/app_settings_adb_2.png">
+   
    - 如果页面中未显示该选项，请尝试重新启动“设置”应用后再检查。
 6. 退出“设置”应用。
 
@@ -81,14 +96,25 @@ _※ 说明：如果你不退出设置应用，可能会导致你无法看到“
 2. 在电脑终端中执行以下命令：
    ```shell
    adb devices
+   # 期望返回的信息 - 已允许调试
+   List of devices attached
+   64066601234567890       device
+   # 期望返回的信息 - 未允许调试
+   List of devices attached
+   64066601234567890       unauthorized
+   # 64066601234567890 为设备序列号，仅供参考，请以实际情况为准
    ```
    * 盒子屏幕上会弹出“允许 USB 调试吗？”对话框。
 
-      勾选 **“一律允许”** 并点击 **确定**。
+      <img height="300" src="./images/screenshots/dialog_adb.png">
+
+      勾选 **"一律允许"** 并点击 **确定**。
 
    * 再次运行 `adb devices`，此时应能看到盒子的序列号及状态为 **device**。
 
-_※ 说明：如果你之前已经用电脑连接过 ADB ，那么在这一步中看不到授权对话框是正常的。_
+_※ 说明：_
+- _如果你之前已经用电脑连接过 ADB ，那么在这一步中看不到授权对话框是正常的。_
+- _勾选对话框中的"一律允许"选项为可选操作，但是为了便于后续的调试，推荐勾选此选项。_
 
 > [!TIP]
 > 没有看到对话框？ 请尝试按照以下几个方向来检查：
@@ -99,23 +125,24 @@ _※ 说明：如果你之前已经用电脑连接过 ADB ，那么在这一步�
 > * 检查 USB 数据线和驱动工作正常。
 
 ## 打开 OEM 解锁 选项
-1. 在电脑终端中执行下列命令来打开原生设置:
+1. 在电脑终端中执行下列命令来打开原生设置中的开发者选项界面:
    ```shell
-   adb shell am start com.android.tv.settings/com.android.tv.settings.MainSettings
+   adb shell am start com.android.tv.settings/com.android.tv.settings.system.development.DevelopmentActivity
+   # 期望返回的信息
+   Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.android.tv.settings/.system.development.DevelopmentActivity }
    ```
-2. 在打开的“原生设置”应用中，依次点击 `设备偏好设置 > 关于` 。
-3. 找到`Android TV 操作系统版本`选项并连续点击多次，直到提示“您现在处于开发者模式”。
-4. 返回到`设备偏好设置`页面中，找到`开发者选项`并点击进入。
-5. 在`开发者选项`页面中找到`OEM 解锁`选项并启用。
+2. 在打开的`开发者选项`页面中找到"OEM 解锁"选项并尝试启用。
 
-> [!TIP]
-> 你可能会看到两个名为“Android TV 操作系统版本”的选项：
->
-> * 其中一个仅显示数字版本号（如 `14`）
-> * 另一个显示完整版本号（如 `UD2A.240505.001.W1.OS2.0.7.0.UZFAABX`）
->
-> 请点击显示了 **完整版本号** 的选项。
-> （示例版本号仅供参考，请以实际设备为准。）
+   <img height="300" src="./images/screenshots/app_settings_developmentactivity_1.png">
+
+   * 如果系统显示了"要允许 OEM 解锁吗？"界面，请在界面中选择启用
+
+      <img height="300" src="./images/screenshots/app_settings_developmentactivity_2.png">
+
+   * 完成后，"OEM 解锁"选项的状态应如下图所示
+
+      <img height="300" src="./images/screenshots/app_settings_developmentactivity_3.png">\
+   _※ 说明：由于未能提前保存相关截图，此图片截取自其他设备，仅供参考，请以实际设备为准。_
 
 ## 进入 Fastboot 模式并解锁 Bootloader
 > [!WARNING]
@@ -140,14 +167,45 @@ _※ 说明：如果你之前已经用电脑连接过 ADB ，那么在这一步�
    adb shell reboot bootloader
    ```
 2. 进入 Fastboot 模式后，在电脑终端中依次执行下列命令来进行解锁:
-   ```shell
-   fastboot devices            # 检查设备是否连接 (可选)
-   fastboot getvar all         # 获取设备当前信息 (可选)
-   fastboot flashing unlock    # 解除 Bootloader 锁定
-   fastboot getvar unlocked    # 验证是否解锁成功 (返回 unlocked: yes 则代表已成功解锁)
-   fastboot reboot             # 重启设备 (可选)
-   ```
-3. 恭喜你，你已经成功完成解锁操作
+   - 检查设备是否连接 (可选)
+      ```shell
+      fastboot devices
+      # 期望返回的信息
+      64066601234567890        fastboot
+      ```  
+   - 获取设备当前信息 (可选)
+      ```shell
+      fastboot getvar all
+      # 期望返回的信息
+      (bootloader) hw-revision: 0
+      (bootloader) battery-voltage: 4
+      (bootloader) is-userspace: no
+      all:
+      Finished. Total time: 0.045s
+      # 由于返回信息过多，在此处不做完整展示，完整内容请查看下方的示例输出
+      ```
+   - 执行解除 Bootloader 锁定操作
+      ```shell
+      fastboot flashing unlock
+      # 期望返回的信息
+      OKAY [  0.453s]
+      Finished. Total time: 0.454s 
+      ```
+   - 验证是否解锁成功
+      ```shell
+      fastboot getvar unlocked
+      # 期望返回的信息
+      unlocked: yes
+      Finished. Total time: 0.001s 
+      ```
+   - 重启设备 (可选)
+      ```shell
+      fastboot reboot
+      # 期望返回的信息
+      Rebooting  OKAY [  0.001s]
+      Finished. Total time: 0.002s
+      ```
+至此，你已经完成所有解锁过程
 
 > [!TIP]
 > 输入 fastboot 相关命令后发现提示`< waiting for any device >` ?
@@ -222,19 +280,17 @@ Finished. Total time: 0.002s
 > [!CAUTION]
 > **警告：**
 > 
-> 如果你刷入的系统不是**完全匹配设备原厂签名**的版本（例如修改过的 system、boot、vbmeta、vendor 等），  
-> 再次锁定 Bootloader 将会**导致设备无法启动**。  
+> 如果你刷入的系统不是**完全匹配设备原厂签名**的版本（例如修改过的 system、boot、vbmeta、vendor 等），再次锁定 Bootloader 将会**导致设备无法启动**。  
 > 
 > 请在执行前确认：
 > - 当前系统是官方或经过正确签名的版本；
-> - 已恢复所有分区的原始状态（包括但不限于 vbmeta、boot、system、vendor 等）；
+> - 已恢复相关分区的原始状态（包括但不限于 vbmeta、boot、system、vendor 等）；
 > - 你确实有重新锁定 Bootloader 的需求。
 
 > [!WARNING]
 > **重要提醒：**
 >
-> 重新锁定 Bootloader 将清除设备上的所有数据。
->
+> 重新锁定 Bootloader 将清除设备上的所有数据。\
 > 在继续操作前，**请务必备份所有重要数据**。
 
 如果你确定要重新锁定 Bootloader，请在 Fastboot 模式中执行以下命令：
