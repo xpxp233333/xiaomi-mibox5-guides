@@ -49,7 +49,7 @@
 
 _※ 说明：_
 - _本文档中提到的 “USB-C” 接口，即为日常生活中经常用到的 “Type-C” 接口。_
-- _所有 ADB 相关操作均可以使用无线模式来进行，但是在实际操作流程中，无线模式不如有线模式方便，因此在此教程中不做推荐。_
+- _所有 ADB 相关操作均可以使用无线模式来进行，但是在实际操作流程中，无线模式可能不如有线模式方便，因此在此教程中不做推荐。_
 - _如果你的电视盒子还没有解除 Bootloader 锁定，那么请参阅教程：[如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定](unlock_bootloader.md)。_
 - _Android OTA 镜像解压工具 为可选工具_
    - _你可以使用其他支持解包`payload.bin`的类似工具进行相关操作。_
@@ -84,9 +84,9 @@ _※ 说明：_
       - _下载链接来自 4PDA 论坛。_
       - _作者不保证这些直链能一直有效。_
       - _本文仅为方便访问而列出直链，请在下载前自行确认其兼容性与安全性。_
-***
+
 2. 使用 Android OTA 镜像解压工具 解包第一步中下载的固件 ([点击此处来查看使用方法](https://github.com/tobyxdd/android-ota-payload-extractor))
-***
+
 3. 在解包后的文件中找到以下镜像，并使用这些文件制作可安装的 GSI：
    - product.img (取自 Xiaomi Mi TV Stick 4K)
    - system.img (取自 Xiaomi Mi TV Stick 4K)
@@ -94,7 +94,7 @@ _※ 说明：_
    - vendor.img (取自 Xiaomi TV Box S 3rd Gen)
 
    找齐上述镜像后，将它们打包为一个 `.zip` 文件（压缩包内不要存在文件夹，并且文件格式建议使用标准 ZIP 格式，如要使用其他格式，请自行测试）。
-***
+
 4. 将制作好的 GSI 上传至设备，你可以使用以下命令进行上传:
    ```shell
    adb push <本地 GSI 文件路径> <电视盒子上的路径>
@@ -102,7 +102,7 @@ _※ 说明：_
    $ adb push D:\MiBox5\test.zip /sdcard
    # 说明: 将电脑 D 盘 MiBox5 文件夹中的 test.zip 上传到盒子的 /sdcard 目录
    ```
-***
+
 5. 上传完成后，使用下列命令来安装 GSI :
    ```shell
    adb shell am start-activity -n com.android.dynsystem/com.android.dynsystem.VerificationActivity -a android.os.image.action.START_INSTALL -d <电视盒子上 GSI 文件的路径> --el KEY_USERDATA_SIZE <DSU 用户空间大小 (单位: 字节)>
@@ -148,6 +148,11 @@ _※ 说明：_
 > [!NOTE]
 > ### 注意
 > 开始前，请确保电视盒子已解除 Bootloader 锁定。
+
+> [!WARNING]\
+> 在任何情况下都请务必刷入与当前设备系统版本一致的镜像。\
+> 当设备完成 OTA 更新后，建议立即备份相关系统镜像，以备不时之需。\
+> 救砖时，不建议尝试刷入与当前设备系统版本不匹配的镜像。
 
 1. 在进入 GSI 系统前先查询当前设备上的活动槽位
    ```shell
@@ -228,12 +233,15 @@ _※ 说明：_
       ```
    4. 备份分区推荐
 
-      推荐备份下列分区: `boot` `bootloader` `dtbo` `init_boot` `odm_ext` `oem` `super` `vbmeta` `vbmeta_system` `vendor_boot`
+      推荐备份下列分区: `boot` `dtbo` `init_boot` `odm_ext` `oem` `super` `vbmeta` `vbmeta_system` `vendor_boot`
 
-      上述分区在后续的厂商 ota 更新过程中都有可能被更新，因此强烈建议备份这些分区
+      上述分区在后续的厂商 OTA 更新过程中都有可能被更新，因此强烈建议备份这些分区
 > [!WARNING]\
 > 如果你还有其他的特殊需求，也可以视情况来备份其他的分区。\
-> 但是请注意，如果你在后续选择还原某些其他分区，这个操作可能会导致设备出现异常或直接变砖，因此请谨慎操作，作者对此操作产生的任何后果概不负责。
+> 但是请注意，如果你在后续选择还原某些其他分区，这个操作可能会导致设备出现异常或直接变砖，因此请谨慎操作，作者对此操作产生的任何后果概不负责。\
+> bootloader 也有可能在厂商 OTA 更新过程中被更新，因此，你可以视情况来进行备份。\
+> 在救砖时，请谨慎处理 bootloader 分区，除非必要，否则不建议执行刷入操作。
+
    5. 备份指定分区
       - 根据之前执行`adb shell getprop ro.boot.slot_suffix`后返回的信息可以得知，当前设备的活动槽位为 `a` ，因此在备份时，应该备份 `boot_a` `odm_ext_a` 这种名字中带 `_a` 的分区
       - 如果你当前设备的活动槽位为 `b` ，那么在备份时，请备份 `boot_b` `odm_ext_b` 这种名字中带 `_b` 的分区
