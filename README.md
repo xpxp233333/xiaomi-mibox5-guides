@@ -134,6 +134,9 @@ _※ 说明：由于官方并未提供 小米盒子5 的接口照片，因此接
 > [!NOTE]
 > ### 注意
 > 此处提供的信息仅供参考，请以实际设备为准。
+> 
+> 提取版本: UD2A.240505.001.W1.OS2.0.7.0.UZFAABX
+
 
 | 分区号 | 起始扇区 | 结束扇区 | 大小   | 大小(字节)  |  分区名称        | 设备节点      |
 | -- | ------- | -------- | -------- | ----------- | --------------- | ------------ |
@@ -172,6 +175,166 @@ _※ 说明：由于官方并未提供 小米盒子5 的接口照片，因此接
 | -  | -       | -        | 4.0 MiB  | 4194304     | -               | mmcblk0boot0 |
 | -  | -       | -        | 4.0 MiB  | 4194304     | -               | mmcblk0boot1 |
 
+### 分区信息来源
+
+<details>
+
+<summary>点击此处来查看</summary>
+
+```shell
+$ sgdisk --print /dev/block/mmcblk0
+Disk /dev/block/mmcblk0: 61071360 sectors, 29.1 GiB
+Sector size (logical/physical): 512/512 bytes
+Disk identifier (GUID): 55A297A3-BE53-7911-A213-E9E22D518E1F
+Partition table holds up to 32 entries
+Main partition table begins at sector 2 and ends at sector 9
+First usable sector is 34, last usable sector is 61071326
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 200637 sectors (98.0 MiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1           73728          204799   64.0 MiB    0700  reserved
+   2          221184          237567   8.0 MiB     0700  env
+   3          270336          274431   2.0 MiB     0700  frp
+   4          290816          307199   8.0 MiB     0700  factory
+   5          309248          440319   64.0 MiB    0700  vendor_boot_a
+   6          442368          573439   64.0 MiB    0700  vendor_boot_b
+   7          575488          591871   8.0 MiB     0700  bootloader_a
+   8          593920          610303   8.0 MiB     0700  bootloader_b
+   9          612352          677887   32.0 MiB    0700  tee
+  10          679936          696319   8.0 MiB     0700  logo
+  11          698368          702463   2.0 MiB     0700  misc
+  12          704512          708607   2.0 MiB     0700  dtbo_a
+  13          710656          714751   2.0 MiB     0700  dtbo_b
+  14          716800          733183   8.0 MiB     0700  cri_data
+  15          735232          755711   10.0 MiB    0700  factorydata
+  16          757760          790527   16.0 MiB    0700  param
+  17          792576          825343   16.0 MiB    0700  odm_ext_a
+  18          827392          860159   16.0 MiB    0700  odm_ext_b
+  19          862208          927743   32.0 MiB    0700  oem_a
+  20          929792          995327   32.0 MiB    0700  oem_b
+  21          997376         1128447   64.0 MiB    0700  boot_a
+  22         1130496         1261567   64.0 MiB    0700  boot_b
+  23         1263616         1279999   8.0 MiB     0700  init_boot_a
+  24         1282048         1298431   8.0 MiB     0700  init_boot_b
+  25         1300480         1431551   64.0 MiB    0700  metadata
+  26         1433600         1437695   2.0 MiB     0700  vbmeta_a
+  27         1439744         1443839   2.0 MiB     0700  vbmeta_b
+  28         1445888         1449983   2.0 MiB     0700  vbmeta_system_a
+  29         1452032         1456127   2.0 MiB     0700  vbmeta_system_b
+  30         1458176         7602175   2.9 GiB     0700  super
+  31         7604224         7735295   64.0 MiB    0700  rsv
+  32         7737344        61067263   25.4 GiB    0700  userdata
+
+$ ls -l /dev/block/by-name
+total 0
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 boot_a -> /dev/block/mmcblk0p21
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 boot_b -> /dev/block/mmcblk0p22
+lrwxrwxrwx 1 root root 20 1969-12-31 19:00 bootloader_a -> /dev/block/mmcblk0p7
+lrwxrwxrwx 1 root root 20 1969-12-31 19:00 bootloader_b -> /dev/block/mmcblk0p8
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 cri_data -> /dev/block/mmcblk0p14
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 dtbo_a -> /dev/block/mmcblk0p12
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 dtbo_b -> /dev/block/mmcblk0p13
+lrwxrwxrwx 1 root root 20 1969-12-31 19:00 env -> /dev/block/mmcblk0p2
+lrwxrwxrwx 1 root root 20 1969-12-31 19:00 factory -> /dev/block/mmcblk0p4
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 factorydata -> /dev/block/mmcblk0p15
+lrwxrwxrwx 1 root root 20 1969-12-31 19:00 frp -> /dev/block/mmcblk0p3
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 init_boot_a -> /dev/block/mmcblk0p23
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 init_boot_b -> /dev/block/mmcblk0p24
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 logo -> /dev/block/mmcblk0p10
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 metadata -> /dev/block/mmcblk0p25
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 misc -> /dev/block/mmcblk0p11
+lrwxrwxrwx 1 root root 18 1969-12-31 19:00 mmcblk0 -> /dev/block/mmcblk0
+lrwxrwxrwx 1 root root 23 1969-12-31 19:00 mmcblk0boot0 -> /dev/block/mmcblk0boot0
+lrwxrwxrwx 1 root root 23 1969-12-31 19:00 mmcblk0boot1 -> /dev/block/mmcblk0boot1
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 odm_ext_a -> /dev/block/mmcblk0p17
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 odm_ext_b -> /dev/block/mmcblk0p18
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 oem_a -> /dev/block/mmcblk0p19
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 oem_b -> /dev/block/mmcblk0p20
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 param -> /dev/block/mmcblk0p16
+lrwxrwxrwx 1 root root 20 1969-12-31 19:00 reserved -> /dev/block/mmcblk0p1
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 rsv -> /dev/block/mmcblk0p31
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 super -> /dev/block/mmcblk0p30
+lrwxrwxrwx 1 root root 20 1969-12-31 19:00 tee -> /dev/block/mmcblk0p9
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 userdata -> /dev/block/mmcblk0p32
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 vbmeta_a -> /dev/block/mmcblk0p26
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 vbmeta_b -> /dev/block/mmcblk0p27
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 vbmeta_system_a -> /dev/block/mmcblk0p28
+lrwxrwxrwx 1 root root 21 1969-12-31 19:00 vbmeta_system_b -> /dev/block/mmcblk0p29
+lrwxrwxrwx 1 root root 20 1969-12-31 19:00 vendor_boot_a -> /dev/block/mmcblk0p5
+lrwxrwxrwx 1 root root 20 1969-12-31 19:00 vendor_boot_b -> /dev/block/mmcblk0p6
+
+$ blockdev --getsize64 /dev/block/mmcblk0p1
+67108864
+$ blockdev --getsize64 /dev/block/mmcblk0p2
+8388608
+$ blockdev --getsize64 /dev/block/mmcblk0p3
+2097152
+$ blockdev --getsize64 /dev/block/mmcblk0p4
+8388608
+$ blockdev --getsize64 /dev/block/mmcblk0p5
+67108864
+$ blockdev --getsize64 /dev/block/mmcblk0p6
+67108864
+$ blockdev --getsize64 /dev/block/mmcblk0p7
+8388608
+$ blockdev --getsize64 /dev/block/mmcblk0p8
+8388608
+$ blockdev --getsize64 /dev/block/mmcblk0p9
+33554432
+$ blockdev --getsize64 /dev/block/mmcblk0p10
+8388608
+$ blockdev --getsize64 /dev/block/mmcblk0p11
+2097152
+$ blockdev --getsize64 /dev/block/mmcblk0p12
+2097152
+$ blockdev --getsize64 /dev/block/mmcblk0p13
+2097152
+$ blockdev --getsize64 /dev/block/mmcblk0p14
+8388608
+$ blockdev --getsize64 /dev/block/mmcblk0p15
+10485760
+$ blockdev --getsize64 /dev/block/mmcblk0p16
+16777216
+$ blockdev --getsize64 /dev/block/mmcblk0p17
+16777216
+$ blockdev --getsize64 /dev/block/mmcblk0p18
+16777216
+$ blockdev --getsize64 /dev/block/mmcblk0p19
+33554432
+$ blockdev --getsize64 /dev/block/mmcblk0p20
+33554432
+$ blockdev --getsize64 /dev/block/mmcblk0p21
+67108864
+$ blockdev --getsize64 /dev/block/mmcblk0p22
+67108864
+$ blockdev --getsize64 /dev/block/mmcblk0p23
+8388608
+$ blockdev --getsize64 /dev/block/mmcblk0p24
+8388608
+$ blockdev --getsize64 /dev/block/mmcblk0p25
+67108864
+$ blockdev --getsize64 /dev/block/mmcblk0p26
+2097152
+$ blockdev --getsize64 /dev/block/mmcblk0p27
+2097152
+$ blockdev --getsize64 /dev/block/mmcblk0p28
+2097152
+$ blockdev --getsize64 /dev/block/mmcblk0p29
+2097152
+$ blockdev --getsize64 /dev/block/mmcblk0p30
+3145728000
+$ blockdev --getsize64 /dev/block/mmcblk0p31
+67108864
+$ blockdev --getsize64 /dev/block/mmcblk0p32
+27304919040
+$ blockdev --getsize64 /dev/block/mmcblk0boot0
+4194304
+$ blockdev --getsize64 /dev/block/mmcblk0boot1
+4194304
+```
+
+</details>
 
 ## UART连接信息
 > [!WARNING] 
