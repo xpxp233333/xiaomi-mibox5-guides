@@ -183,7 +183,12 @@ _※ 说明：_
       Package com.android.tv.frameworkpackagestubs new state: disabled-user
       ```
 
-   _※ 说明：如果不禁用，在后续步骤中你将无法选择文件。_
+> [!TIP]
+> ### 为什么要禁用 Activity Stup ?
+> 在 Android TV 14 中，系统没有提供 DocumentUI 来让你执行相关操作，取而代之的是 Activity Stup \
+> 在某些场景中 Activity Stup 会和 DocumentUI 一样，来强行接管文件选择相关操作\
+> 但问题是 Activity Stup 本身并不提供任何文件选择相关的功能\
+> 因此，为了确保 Magisk 修补镜像时能够正常调用安装的第三方文件管理器，需要暂时禁用 Activity Stup 来保证 Magisk 能够正常调用安装的第三方文件管理器
 
 3. 将 init_boot 镜像上传至设备
 
@@ -281,6 +286,15 @@ _※ 说明：_
    如果提示需要修复环境，请点击确认，点击确认后系统将在5秒后自动重启。
 
    <img height="300" src="./images/screenshots/app_magisk_install_2.png">
+
+10. 重新启用之前禁用的系统应用: Activity Stup (可选)
+
+    你可以使用下列 ADB 命令进行启用:
+      ```shell
+      adb shell pm enable --user 0 com.android.tv.frameworkpackagestubs
+      # 期望返回的信息
+      Package com.android.tv.frameworkpackagestubs new state: enabled
+      ```
 
 至此，你已经完成所有安装过程
 
