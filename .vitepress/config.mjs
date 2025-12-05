@@ -4,7 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   srcDir: "docs",
   lang: 'zh-Hans',
-  base: '/932a499d453f/',
+  base: '/xiaomi-mibox5-guides/',
   title: "小米盒子5 (MOB2MB-5P) 文档",
   description: "适用于 小米盒子5 (MOB2MB-5P) 的文档，提供了部分硬件信息、实机照片、拆机照片、UART/TTL 连接信息、Android 分区表、如何 Root 等相关信息。",
   themeConfig: {
