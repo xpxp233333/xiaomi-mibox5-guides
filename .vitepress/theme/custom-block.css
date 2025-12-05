@@ -1,0 +1,70 @@
+/**
+ * Component: Custom Block
+ * -------------------------------------------------------------------------- */
+
+ /**
+ * Default
+ * --vp-custom-block-tip-border: transparent;
+ * --vp-custom-block-tip-text: var(--vp-c-text-1);
+ * --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
+ * --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
+ * -------------------------------------------------------------------------- */
+ 
+:root {
+  --vp-custom-block-info-text: var(--vp-c-text-1);
+  --vp-custom-block-info-bg: #8e96aa59;
+
+  --vp-custom-block-note-text: var(--vp-c-text-1);
+  --vp-custom-block-note-bg: #4493f880;
+
+  --vp-custom-block-important-text: var(--vp-c-text-1);
+  --vp-custom-block-important-bg: #ab7df880;
+
+  --vp-custom-block-tip-text: var(--vp-c-text-1);
+  --vp-custom-block-tip-bg: #3fb95080;
+
+  --vp-custom-block-warning-text: var(--vp-c-text-1);
+  --vp-custom-block-warning-bg: #d2992280;
+
+  --vp-custom-block-danger-text: var(--vp-c-text-1);
+  --vp-custom-block-danger-bg: #f8514980;
+
+  --vp-custom-block-caution-text: var(--vp-c-text-1);
+  --vp-custom-block-caution-bg: #f8514980;
+
+  --vp-custom-block-details-text: var(--vp-c-text-1);
+  --vp-custom-block-details-bg: #8e96aa59;
+}
+
+.dark {
+  --vp-custom-block-info-text: var(--vp-c-text-1);
+  --vp-custom-block-info-bg: #8e96aa33;
+
+  --vp-custom-block-note-text: var(--vp-c-text-1);
+  --vp-custom-block-note-bg: #4493f859;
+
+  --vp-custom-block-important-text: var(--vp-c-text-1);
+  --vp-custom-block-important-bg: #ab7df859;
+
+  --vp-custom-block-tip-text: var(--vp-c-text-1);
+  --vp-custom-block-tip-bg: #3fb95059;
+
+  --vp-custom-block-warning-text: var(--vp-c-text-1);
+  --vp-custom-block-warning-bg: #d2992259;
+
+  --vp-custom-block-danger-text: var(--vp-c-text-1);
+  --vp-custom-block-danger-bg: #f8514959;
+
+  --vp-custom-block-caution-text: var(--vp-c-text-1);
+  --vp-custom-block-caution-bg: #f8514959;
+
+  --vp-custom-block-details-text: var(--vp-c-text-1);
+  --vp-custom-block-details-bg: #8e96aa33;
+}
+
+/**
+ * 容器标题字体大小
+ * -------------------------------------------------------------------------- */
+.custom-block-title {
+    font-size: 20px;
+}
