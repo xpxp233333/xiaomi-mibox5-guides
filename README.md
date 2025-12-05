@@ -48,7 +48,7 @@ _※ 说明：此处的信息均来自于作者自己的设备，不同生产批
 
 <summary>点击此处来查看照片</summary>
 
-<img height="1000" src="./images/device/mibox5.png">
+<img height="1000" src="./docs/images/device/mibox5.png">
 
 _※ 说明：由于官方并未提供 小米盒子5 的接口照片，因此接口照片来自于与 小米盒子5 外观一样的 Xiaomi TV Box S (3rd Gen)，照片仅供参考，请以实物为准。_
 </details>
@@ -60,7 +60,7 @@ _※ 说明：由于官方并未提供 小米盒子5 的接口照片，因此接
 
 <summary>点击此处来查看照片</summary>
 
-<img height="1000" src="./images/device/mainboard_front_shield.png">
+<img height="1000" src="./docs/images/device/mainboard_front_shield.png">
 
 </details>
 
@@ -69,7 +69,7 @@ _※ 说明：由于官方并未提供 小米盒子5 的接口照片，因此接
 
 <summary>点击此处来查看照片</summary>
 
-<img height="1000" src="./images/device/mainboard_front.png">
+<img height="1000" src="./docs/images/device/mainboard_front.png">
 
 </details>
 
@@ -78,7 +78,7 @@ _※ 说明：由于官方并未提供 小米盒子5 的接口照片，因此接
 
 <summary>点击此处来查看照片</summary>
 
-<img height="1000" src="./images/device/mainboard_back_shield.png">
+<img height="1000" src="./docs/images/device/mainboard_back_shield.png">
 
 </details>
 
@@ -87,7 +87,7 @@ _※ 说明：由于官方并未提供 小米盒子5 的接口照片，因此接
 
 <summary>点击此处来查看照片</summary>
 
-<img height="1000" src="./images/device/mainboard_back.png">
+<img height="1000" src="./docs/images/device/mainboard_back.png">
 
 </details>
 
@@ -98,7 +98,7 @@ _※ 说明：由于官方并未提供 小米盒子5 的接口照片，因此接
 
 <summary>查看 SOC 特写</summary>
 
-<img height="500" src="./images/device/soc.png">
+<img height="500" src="./docs/images/device/soc.png">
 
 </details>
 
@@ -107,7 +107,7 @@ _※ 说明：由于官方并未提供 小米盒子5 的接口照片，因此接
 
 <summary>查看 eMMC 特写</summary>
 
-<img height="500" src="./images/device/emmc.png">
+<img height="500" src="./docs/images/device/emmc.png">
 
 </details>
 
@@ -116,7 +116,7 @@ _※ 说明：由于官方并未提供 小米盒子5 的接口照片，因此接
 
 <summary>查看 RAM 特写</summary>
 
-<img height="500" src="./images/device/ram.png">
+<img height="500" src="./docs/images/device/ram.png">
 
 </details>
 
@@ -125,7 +125,7 @@ _※ 说明：由于官方并未提供 小米盒子5 的接口照片，因此接
 
 <summary>查看 Wifi+BT模块 特写</summary>
 
-<img height="500" src="./images/device/wifi_bt_module.png">
+<img height="500" src="./docs/images/device/wifi_bt_module.png">
 
 </details>
 
@@ -342,7 +342,7 @@ $ blockdev --getsize64 /dev/block/mmcblk0boot1
 >
 > 如你选择继续则代表你已经充分了解并可自行承担全部风险，并自愿承担责任，作者对此操作产生的任何后果概不负责。
 
-<img height="200" src="./images/hdmi_connector_pinout.svg">
+<img height="200" src="./docs/images/hdmi_connector_pinout.svg">
 
 ### 引脚定义
 | HDMI 引脚编号 | 对应 UART 信号 | 说明 |

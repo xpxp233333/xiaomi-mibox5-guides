@@ -12,6 +12,8 @@
 > - 某些应用检测到 DRM 失效后拒绝播放受保护内容
 > 
 > 在非必要情况下不建议执行此操作，如你选择继续则代表你已经充分了解并可自行承担全部风险，并自愿承担责任，作者对此操作产生的任何后果概不负责。
+> 
+> **此文档与小米公司没有任何关联，在阅读相关内容前请自行判断风险**
 
 ### 目录
 - [小米盒子信息](#小米盒子信息)
@@ -34,8 +36,7 @@
 | 生产日期 | 2025 年 4 月 |
 
 > [!IMPORTANT] 重要提醒
-> 此文档中的内容仅在上述版本中进行过完整测试。  
->
+> 此文档中的内容仅在上述版本中进行过完整测试。\
 > 若你的设备信息与上表**存在差异**，则部分步骤可能会不适用或导致设备异常，请在充分了解风险后谨慎操作。
 >
 > 此文档中出现的所有命令输出示例仅供参考，请以实际情况为准。
@@ -112,7 +113,7 @@
    adb shell am start-activity -n com.android.dynsystem/com.android.dynsystem.VerificationActivity -a android.os.image.action.START_INSTALL -d <电视盒子上 GSI 文件的路径> --el KEY_USERDATA_SIZE <DSU 用户空间大小 (单位: 字节)>
    # 下方为一个使用示例
    $ adb shell am start-activity -n com.android.dynsystem/com.android.dynsystem.VerificationActivity -a android.os.image.action.START_INSTALL -d 'file:///sdcard/test.zip' --el KEY_USERDATA_SIZE 6442450944
-   # 说明: 安装盒子 sdcard 文件夹中文件名为 test.zip 的 GSI 镜像，并且设置 DSU 用户空间大小为 6GB
+   # 说明: 安装盒子 sdcard 目录中文件名为 test.zip 的 GSI 镜像，并且设置 DSU 用户空间大小为 6GB
    ```
    > [!NOTE]
    > - 建议将用户空间设置为 6GB (6442450944) 或更大。
@@ -238,11 +239,11 @@
       推荐备份下列分区: `boot` `dtbo` `init_boot` `odm_ext` `oem` `super` `vbmeta` `vbmeta_system` `vendor_boot`
 
       上述分区在后续的厂商 OTA 更新过程中都有可能被更新，因此强烈建议备份这些分区
-> [!WARNING] 注意
-> 如果你还有其他的特殊需求，也可以视情况来备份其他的分区。\
-> 但是请注意，如果你在后续选择还原某些其他分区，这个操作可能会导致设备出现异常或直接变砖，因此请谨慎操作，作者对此操作产生的任何后果概不负责。\
-> bootloader 也有可能在厂商 OTA 更新过程中被更新，因此，你可以视情况来进行备份。\
-> **在救砖时，请谨慎处理 bootloader 分区，除非必要，否则不建议执行刷入操作**。
+      > [!WARNING] 注意
+      > 如果你还有其他的特殊需求，也可以视情况来备份其他的分区。\
+      > 但是请注意，如果你在后续选择还原某些其他分区，这个操作可能会导致设备出现异常或直接变砖，因此请谨慎操作，作者对此操作产生的任何后果概不负责。\
+      > bootloader 也有可能在厂商 OTA 更新过程中被更新，因此，你可以视情况来进行备份。\
+      > **在救砖时，请谨慎处理 bootloader 分区，除非必要，否则不建议执行刷入操作**。
 
    5. 备份指定分区
       - 根据之前执行`adb shell getprop ro.boot.slot_suffix`后返回的信息可以得知，当前设备的活动槽位为 `a` ，因此在备份时，应该备份 `boot_a` `odm_ext_a` 这种名字中带 `_a` 的分区
@@ -252,7 +253,7 @@
       以 `boot_a` 为例，使用 `dd` 命令将该分区导出为镜像文件：
       ```shell
       dd if=/dev/block/by-name/boot_a of=/sdcard/boot.img
-      # 将 boot_a 分区导出到 /sdcard 文件夹中，文件名为 boot.img
+      # 将 boot_a 分区导出到 /sdcard 目录中，文件名为 boot.img
       ```
       命令说明：\
       `if= 为输入路径` `of= 为输出路径`

@@ -1,5 +1,5 @@
 #  如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定
-本教程介绍如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定。
+此文档介绍了如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定。
 
 > [!CAUTION]
 > 解锁 Bootloader 会导致设备面临各类安全风险，并可能对设备造成不可预估的影响，可能导致：
@@ -38,13 +38,12 @@ _※ 说明: 仅当你希望重新锁定 Bootloader 时，才需要阅读 [重�
 | 购买日期 | 2025 年 10 月 |
 | 生产日期 | 2025 年 4 月 |
 
-> [!WARNING] 
+> [!WARNING]
 > ### 额外说明
-> 本教程仅在上述版本中进行过完整测试。  
->
+> 此文档中的内容仅在上述版本中进行过完整测试。\
 > 若你的设备信息与上表**存在差异**，则部分步骤可能会不适用或导致设备异常，请在充分了解风险后谨慎操作。
 >
-> 此教程中出现的所有命令输出示例仅供参考，请以实际情况为准。
+> 此文档中出现的所有命令输出示例仅供参考，请以实际情况为准。
 
 ## 前置要求
 - 小米盒子 5 (MOB2MB-5P) 一台（未解除 Bootloader 锁定）
@@ -58,23 +57,23 @@ _※ 说明: 仅当你希望重新锁定 Bootloader 时，才需要阅读 [重�
 
 _※ 说明：_
 - _本文档中提到的 “USB-C” 接口，即为日常生活中经常用到的 “Type-C” 接口。_
-- _如果你的设备已经处于解锁状态，则无需执行本教程中与解锁相关的步骤。_
-- _如果你想重新锁定你的设备，那么请参阅本教程中的 [重新锁定 Bootloader](#额外内容-重新锁定-bootloader-可选) 章节。_
+- _如果你的设备已经处于解锁状态，则无需执行本文档中与解锁相关的步骤。_
+- _如果你想重新锁定你的设备，那么请参阅本文档中的 [重新锁定 Bootloader](#额外内容-重新锁定-bootloader-可选) 章节。_
 
 ## 启用 ADB 调试 功能
 1. 打开“设置”应用 (包名: `com.xiaomi.mitv.settings`)
 
-   <img height="300" src="./images/screenshots/applist_settings.png">
+   <img height="300" src="./docs/images/screenshots/applist_settings.png">
 
 2. 在“设置”应用中，切换到`关于本机`菜单。
 3. 找到`产品型号`选项并连续点击多次，直到设备提示“您现在处于开发者模式”。
 
-   <img height="300" src="./images/screenshots/app_settings_adb_1.png">
+   <img height="300" src="./docs/images/screenshots/app_settings_adb_1.png">
 
 4. 切换到`账号与安全`菜单。
 5. 启用`ADB 调试`选项。
 
-   <img height="300" src="./images/screenshots/app_settings_adb_2.png">
+   <img height="300" src="./docs/images/screenshots/app_settings_adb_2.png">
    
    - 如果页面中未显示该选项，请尝试重新启动“设置”应用后再检查。
 6. 退出“设置”应用。
@@ -106,7 +105,7 @@ _※ 说明：如果你不退出设置应用，可能会导致你无法看到“
    ```
    * 盒子屏幕上会弹出“允许 USB 调试吗？”对话框。
 
-      <img height="300" src="./images/screenshots/dialog_adb.png">
+      <img height="300" src="./docs/images/screenshots/dialog_adb.png">
 
       勾选 **"一律允许"** 并点击 **确定**。
 
@@ -133,15 +132,15 @@ _※ 说明：_
    ```
 2. 在打开的`开发者选项`页面中找到"OEM 解锁"选项并尝试启用。
 
-   <img height="300" src="./images/screenshots/app_settings_developmentactivity_1.png">
+   <img height="300" src="./docs/images/screenshots/app_settings_developmentactivity_1.png">
 
    * 如果系统显示了"要允许 OEM 解锁吗？"界面，请在界面中选择启用
 
-      <img height="300" src="./images/screenshots/app_settings_developmentactivity_2.png">
+      <img height="300" src="./docs/images/screenshots/app_settings_developmentactivity_2.png">
 
    * 完成后，"OEM 解锁"选项的状态应如下图所示
 
-      <img height="300" src="./images/screenshots/app_settings_developmentactivity_3.png">\
+      <img height="300" src="./docs/images/screenshots/app_settings_developmentactivity_3.png">\
    _※ 说明：由于未能提前保存相关截图，此图片截取自其他设备，仅供参考，请以实际设备为准。_
 
 ## 进入 Fastboot 模式并解锁 Bootloader
