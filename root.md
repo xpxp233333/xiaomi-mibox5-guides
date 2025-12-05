@@ -1,5 +1,5 @@
 #  如何 Root 小米盒子 5 (MOB2MB-5P)
-本教程介绍如何 Root 小米盒子 5 (MOB2MB-5P)。
+此文档介绍了如何 Root 小米盒子 5 (MOB2MB-5P)。
 
 > [!CAUTION]
 > 对设备进行 Root 会导致设备面临各类安全风险，并可能对设备造成不可预估的影响，可能导致：
@@ -35,11 +35,12 @@
 | 购买日期 | 2025 年 10 月 |
 | 生产日期 | 2025 年 4 月 |
 
-> [!WARNING] 
+> [!WARNING]
 > ### 额外说明
-> 本教程仅在上述版本中进行过完整测试。  
->
+> 此文档中的内容仅在上述版本中进行过完整测试。\
 > 若你的设备信息与上表**存在差异**，则部分步骤可能会不适用或导致设备异常，请在充分了解风险后谨慎操作。
+>
+> 此文档中出现的所有命令输出示例仅供参考，请以实际情况为准。
 
 ## 前置要求
 - 小米盒子 5 (MOB2MB-5P) 一台（已解除 Bootloader 锁定）
@@ -57,7 +58,7 @@
 
 > [!NOTE]
 > ### 工具版本说明:
-> 本教程中使用的 Magisk 版本为 29.0\
+> 本文档中使用的 Magisk 版本为 29.0\
 > 由于 Magisk 在不同版本间可能调整修补逻辑、UI 界面或镜像打包方式，建议在操作前确保使用 **相同或更新的稳定版本**。\
 > 若你使用的版本不同，请注意界面或步骤可能略有差异。
 
@@ -69,8 +70,7 @@
 
 _※ 说明：_
 - _本文档中提到的 “USB-C” 接口，即为日常生活中经常用到的 “Type-C” 接口。_
-- _如果你的设备已经处于解锁状态，则无需执行本教程中与解锁相关的步骤。_
-- _如果你的电视盒子还没有解除 Bootloader 锁定，那么请参阅教程：[如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定](unlock_bootloader.md)。_
+- _如果你的电视盒子还没有解除 Bootloader 锁定，那么请参阅文档：[如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定](unlock_bootloader.md)。_
 - _文件管理器+ 为可选应用_
    - _你可以尝试使用其他支持选择文件的文件管理器进行相关操作。_
    - _如果你了通过其他方法得到了兼容的并且已经被修补过的`init_boot`镜像，你也可以直接使用这个镜像，无需执行相关操作。_
@@ -87,7 +87,7 @@ _※ 说明：_
 
 ### 方法一 : 通过 DSU 来进行提取
 
-详细信息请参阅教程：[如何通过 DSU 来备份 小米盒子 5 (MOB2MB-5P) 的系统镜像](backup.md)
+详细信息请参阅文档：[如何通过 DSU 来备份 小米盒子 5 (MOB2MB-5P) 的系统镜像](backup.md)
 
 ### 方法二 : 从全量 OTA 更新包中提取
 > [!NOTE]
@@ -107,7 +107,7 @@ _※ 说明：_
 
    <details>
    <summary>点击查看示例图片 (文件列表截取于 Windows)</summary>
-   <img height="500" src="./images/screenshots/screenshots_payload.png">
+   <img height="500" src="./docs/images/screenshots/screenshots_payload.png">
    </details>
 
 其中就有 Root 所需的 `init_boot.img` ，请妥善保管此镜像，以便于在后续操作的时候可以轻松的找到此镜像。
@@ -142,9 +142,9 @@ _※ 说明：_
 > adb --version
 > ```
 > 如果能正常显示版本号，即表示 ADB 已正确安装。如果没看到版本号，请确保 ADB 已正确安装。\
-> 如果你还不知道怎么样将电视盒子连接电脑至并授权 ADB，那么请参阅其他教程中的：[启用 ADB 调试 功能](unlock_bootloader.md#启用-adb-调试-功能) 和 [连接电脑并授权 ADB](unlock_bootloader.md#连接电脑并授权-adb) 章节。
+> 如果你还不知道怎么样将电视盒子连接电脑至并授权 ADB，那么请参阅文档：[如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定](unlock_bootloader.md) 中的 [启用 ADB 调试 功能](unlock_bootloader.md#启用-adb-调试-功能) 和 [连接电脑并授权 ADB](unlock_bootloader.md#连接电脑并授权-adb) 章节。
 > 
-> 本教程中使用的 Magisk 版本为 29.0\
+> 本文档中使用的 Magisk 版本为 29.0\
 > 由于 Magisk 在不同版本间可能调整修补逻辑、UI 界面或镜像打包方式，建议在操作前确保使用 **相同或更新的稳定版本**。\
 > 若你使用的版本不同，请注意界面或步骤可能略有差异。
 
@@ -209,24 +209,24 @@ _※ 说明：_
       ```
    或是在应用列表中找到名称为 Magisk 的应用并打开
 
-   <img height="300" src="./images/screenshots/applist_magisk.png">
+   <img height="300" src="./docs/images/screenshots/applist_magisk.png">
 
    进入 Magisk 应用主界面后点击 `安装 > 选择并修补一个文件`
 
-   <img height="300" src="./images/screenshots/app_magisk_install.png">
+   <img height="300" src="./docs/images/screenshots/app_magisk_install.png">
 
    在打开的文件选择界面中找到并选择你上传的 init_boot 镜像
 
-   <img height="300" src="./images/screenshots/app_filemanager.png">
+   <img height="300" src="./docs/images/screenshots/app_filemanager.png">
 
    选择完成后点击"开始"
 
-   <img height="300" src="./images/screenshots/app_magisk_install_1.png">
+   <img height="300" src="./docs/images/screenshots/app_magisk_install_1.png">
 
    当安装过程完成后，你可以在安装界面提供的日志中找到已修补镜像的输出位置。\
    通常情况下，镜像会输出在`/storage/emulated/0/Download`目录中，镜像名为 `magisk_patched-[Magisk版本]_[随机字符串].img`
 
-   在此教程中，输出的日志如下 (仅供参考) :
+   在本次操作中，输出的日志如下 (仅供参考) :
    ```log
    - Device platform: armeabi-v7a
    - Installing: 29.0 (29000)
@@ -285,7 +285,7 @@ _※ 说明：_
 
    如果提示需要修复环境，请点击确认，点击确认后系统将在5秒后自动重启。
 
-   <img height="300" src="./images/screenshots/app_magisk_install_2.png">
+   <img height="300" src="./docs/images/screenshots/app_magisk_install_2.png">
 
 10. 重新启用之前禁用的系统应用: Activity Stup (可选)
 
@@ -300,14 +300,14 @@ _※ 说明：_
 
 下图为正常安装的 Magisk 应用主界面
 
-<img height="300" src="./images/screenshots/app_magisk.png">
+<img height="300" src="./docs/images/screenshots/app_magisk.png">
 
 
 ## ~~额外内容: 保留 Root 来安装 OTA 更新 (可选-未实机验证-WIP)~~
 
 > [!CAUTION]
 > ### 警告:
-> 由于 小米盒子 5 截止至教程撰写前，仍未发布任何的 OTA 更新，导致没有办法进行相关测试\
+> 由于 小米盒子 5 截止至文档撰写前，仍未发布任何的 OTA 更新，导致没有办法进行相关测试\
 > 这就代表了此章节的内容**目前没有经过任何实机验证**\
 > 绝大多数信息都是通过结合已有信息猜测得到的，到时候的实际情况可能和此章节中假设的情况完全不同
 > 
@@ -340,11 +340,11 @@ _※ 说明：_
 如果你收到了 OTA 更新，请按照以下方法来进行操作
 1. 打开设置，并转到 `关于本机 > 系统版本`
 
-   <img height="300" src="./images/screenshots/app_settings_update.png">
+   <img height="300" src="./docs/images/screenshots/app_settings_update.png">
 
 2. 点击"立即下载"，并等待更新下载并安装完成
 
-   <img height="300" src="./images/screenshots/app_update_1.png">
+   <img height="300" src="./docs/images/screenshots/app_update_1.png">
 
    _※ 说明：此图片来自其他型号设备，仅供参考，请以实际情况为准。_
 
@@ -354,7 +354,7 @@ _※ 说明：_
 
 3. 下载完成后退出更新界面并返回桌面，然后打开 Magisk 应用
 
-   <img height="300" src="./images/screenshots/applist_magisk.png">
+   <img height="300" src="./docs/images/screenshots/applist_magisk.png">
 
    或是使用使用下列命令来打开 Magisk 应用:
    ```shell
@@ -363,7 +363,7 @@ _※ 说明：_
 
 4. 进入 Magisk 应用主界面后点击 `安装 > 安装到未使用的槽位 (OTA后) > 开始`
 
-   <img height="300" src="./images/screenshots/app_magisk_install_3.png">
+   <img height="300" src="./docs/images/screenshots/app_magisk_install_3.png">
 
    点击后系统将自动执行安装安装过程，并在界面中显示安装日志
    
@@ -376,7 +376,7 @@ _※ 说明：_
 
 下图为正常安装的 Magisk 应用主界面
 
-<img height="300" src="./images/screenshots/app_magisk.png">
+<img height="300" src="./docs/images/screenshots/app_magisk.png">
 
 > [!WARNING]\
 > 当设备完成 OTA 更新后，建议立即备份相关系统镜像，以备不时之需。
@@ -387,7 +387,7 @@ _※ 说明：_
 
 > [!CAUTION]
 > ### 警告:
-> 由于 小米盒子 5 截止至教程撰写前，仍未发布任何的 OTA 更新，导致没有办法进行相关测试\
+> 由于 小米盒子 5 截止至文档撰写前，仍未发布任何的 OTA 更新，导致没有办法进行相关测试\
 > 这就代表了此章节的内容**目前没有经过任何实机验证**\
 > 绝大多数信息都是通过结合已有信息猜测得到的，到时候的实际情况可能和此章节中假设的情况完全不同
 > 

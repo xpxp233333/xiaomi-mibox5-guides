@@ -1,8 +1,8 @@
 #  如何通过 DSU 来备份 小米盒子 5 (MOB2MB-5P) 的系统镜像
-本教程介绍如何通过 DSU 来备份 小米盒子 5 (MOB2MB-5P) 的系统镜像。
+此文档介绍了如何通过 DSU 来备份 小米盒子 5 (MOB2MB-5P) 的系统镜像。
 
 > [!CAUTION]
-> 此教程涉及到 dd 命令的使用，错误的使用可能导致：
+> 此文档中的内容涉及到 dd 命令的使用，错误的使用可能导致：
 > - 硬件损坏
 > - 数据丢失
 > - 设备永久性变砖
@@ -31,10 +31,12 @@
 | 购买日期 | 2025 年 10 月 |
 | 生产日期 | 2025 年 4 月 |
 
-> [!WARNING] 
+> [!WARNING]
 > ### 额外说明
-> 本教程仅在上述版本中进行过完整测试。\
-> 若你的电视盒子信息与上表**存在差异**，则部分步骤可能会不适用或导致设备异常，请在充分了解风险后谨慎操作。
+> 此文档中的内容仅在上述版本中进行过完整测试。\
+> 若你的设备信息与上表**存在差异**，则部分步骤可能会不适用或导致设备异常，请在充分了解风险后谨慎操作。
+>
+> 此文档中出现的所有命令输出示例仅供参考，请以实际情况为准。
 
 ## 前置要求
 - 小米盒子 5 (MOB2MB-5P) 一台（已解除 Bootloader 锁定）
@@ -49,8 +51,8 @@
 
 _※ 说明：_
 - _本文档中提到的 “USB-C” 接口，即为日常生活中经常用到的 “Type-C” 接口。_
-- _所有 ADB 相关操作均可以使用无线模式来进行，但是在实际操作流程中，无线模式可能不如有线模式方便，因此在此教程中不做推荐。_
-- _如果你的电视盒子还没有解除 Bootloader 锁定，那么请参阅教程：[如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定](unlock_bootloader.md)。_
+- _所有 ADB 相关操作均可以使用无线模式来进行，但是在实际操作流程中，无线模式可能不如有线模式方便，因此在此文档中不做推荐。_
+- _如果你的电视盒子还没有解除 Bootloader 锁定，那么请参阅文档：[如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定](unlock_bootloader.md)。_
 - _Android OTA 镜像解压工具 为可选工具_
    - _你可以使用其他支持解包`payload.bin`的类似工具进行相关操作。_
    - _如果你了通过其他方法得到了兼容的带 Root 的 GSI 镜像，你也可以直接使用这个镜像，无需从 OTA 包开始制作。_
@@ -74,7 +76,7 @@ _※ 说明：_
 > - 开始前，请确保电视盒子上拥有足够的可用存储空间，并且电视盒子已解除 Bootloader 锁定。
 > - 4PDA 并非厂商官方页面，在浏览内容和使用相关资源的时候，请注意安全。
 > - 你可能需要一个可用的 4PDA 账号才能访问论坛中的资源。
-> - 绝大多数操作都需要依赖 ADB ，如果你还不知道怎么样将电视盒子连接电脑至并授权 ADB，那么请参阅其他教程中的：[启用 ADB 调试 功能](unlock_bootloader.md#启用-adb-调试-功能) 和 [连接电脑并授权 ADB](unlock_bootloader.md#连接电脑并授权-adb) 章节。
+> - 绝大多数操作都需要依赖 ADB ，如果你还不知道怎么样将电视盒子连接电脑至并授权 ADB，那么请参阅文档：[如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定](unlock_bootloader.md) 中的 [启用 ADB 调试 功能](unlock_bootloader.md#启用-adb-调试-功能) 和 [连接电脑并授权 ADB](unlock_bootloader.md#连接电脑并授权-adb) 章节。
 
 1. 获取以下固件：
    - Xiaomi Mi TV Stick 4K Android 14 userdebug 固件 ([下载链接](https://android.googleapis.com/packages/ota-api/package/6f2e8b157af3409c028f9973b74b0179ced2d93d.zip)) ([链接来源: 4PDA](https://4pda.to/forum/index.php?showtopic=1041410&view=findpost&p=135711658))
@@ -99,8 +101,8 @@ _※ 说明：_
    ```shell
    adb push <本地 GSI 文件路径> <电视盒子上的路径>
    # 下方为一个使用示例
-   $ adb push D:\MiBox5\test.zip /sdcard
-   # 说明: 将电脑 D 盘 MiBox5 文件夹中的 test.zip 上传到盒子的 /sdcard 目录
+   $ adb push D:\MiBox5\test.zip /sdcard/test.zip
+   # 说明: 将电脑 D 盘 MiBox5 文件夹中的 test.zip 上传到盒子的 /sdcard 目录，文件名为 test.zip
    ```
 
 5. 上传完成后，使用下列命令来安装 GSI :
@@ -108,7 +110,7 @@ _※ 说明：_
    adb shell am start-activity -n com.android.dynsystem/com.android.dynsystem.VerificationActivity -a android.os.image.action.START_INSTALL -d <电视盒子上 GSI 文件的路径> --el KEY_USERDATA_SIZE <DSU 用户空间大小 (单位: 字节)>
    # 下方为一个使用示例
    $ adb shell am start-activity -n com.android.dynsystem/com.android.dynsystem.VerificationActivity -a android.os.image.action.START_INSTALL -d 'file:///sdcard/test.zip' --el KEY_USERDATA_SIZE 6442450944
-   # 说明: 安装盒子 sdcard 文件夹中文件名为 test.zip 的 GSI 镜像，并且设置 DSU 用户空间大小为 6GB
+   # 说明: 安装盒子 sdcard 目录中文件名为 test.zip 的 GSI 镜像，并且设置 DSU 用户空间大小为 6GB
    ```
    注意:
    - 建议将用户空间设置为 6GB (6442450944) 或更大。
@@ -203,7 +205,7 @@ _※ 说明：_
 > - 无需完成首次引导流程和手动启用 `ADB 调试` 功能
 > - 可以直接通过 ADB 执行命令
 >
-> 若你使用的不是该教程中制作的镜像，那么这个镜像在默认情况下可能不会自动启用 `ADB 调试` 。\
+> 若你使用的不是通过此文档中提供的方法制作的镜像，那么这个镜像在默认情况下可能不会自动启用 `ADB 调试` 。\
 > 如果重启到 GSI 后发现 `ADB 调试` 功能没有被自动启用，那么请手动启用 `ADB 调试` 功能，否则你将无法执行后续的备份操作。
 
    当成功进入到 GSI 后，你就可以通过下列命令来执行备份操作:
@@ -250,7 +252,7 @@ _※ 说明：_
       以 `boot_a` 为例，使用 `dd` 命令将该分区导出为镜像文件：
       ```shell
       dd if=/dev/block/by-name/boot_a of=/sdcard/boot.img
-      # 将 boot_a 分区导出到 /sdcard 文件夹中，文件名为 boot.img
+      # 将 boot_a 分区导出到 /sdcard 目录中，文件名为 boot.img
       ```
       命令说明：\
       `if= 为输入路径` `of= 为输出路径`

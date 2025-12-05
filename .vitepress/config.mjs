@@ -3,10 +3,10 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   srcDir: "docs",
-
-  title: "小米盒子5 (MOB2MB-5P)",
-  description: "Test",
-  lastUpdated: true,
+  lang: 'zh-Hans',
+  base: '/932a499d453f/',
+  title: "小米盒子5 (MOB2MB-5P) 文档",
+  description: "适用于 小米盒子5 (MOB2MB-5P) 的文档，提供了部分硬件信息、实机照片、拆机照片、UART/TTL 连接信息、Android 分区表、如何 Root 等相关信息。",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -34,7 +34,11 @@ export default defineConfig({
     },
 
     lastUpdated: {
-      text: '最后更新于'
+      text: '最后更新于',
+      formatOptions: {
+        dateStyle: 'short',
+        timeStyle: 'short'
+      }
     },
 
     footer: {
@@ -48,8 +52,7 @@ export default defineConfig({
 
     notFound: {
       title: '请求的页面不存在',
-      quote:
-        '请检查URL是否正确',
+      quote: '请检查URL是否正确',
       linkText: '返回首页'
     },
 
@@ -72,5 +75,4 @@ export default defineConfig({
       detailsLabel: '详细信息'
     }
   }
-
 })
