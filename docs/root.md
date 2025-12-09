@@ -23,6 +23,7 @@
 - [提取 init_boot 镜像](#提取-init_boot-镜像)
 - [修补并刷入 init_boot 镜像](#修补并刷入-init_boot-镜像)
 - [~~额外内容: 保留 Root 来安装 OTA 更新~~](#额外内容-保留-root-来安装-ota-更新) <Badge type="danger" text="未实机验证" /> <Badge type="danger" text="WIP" /> <Badge type="tip" text="可选操作" />
+- [常见问题](#常见问题)
 
 ## 小米盒子信息
 | 项目 | 内容 |
@@ -132,7 +133,7 @@
    - 作者不为这些论坛中的任何内容提供担保。
 :::
 
-## 修补并刷入 init_boot 镜像
+## 修复文件管理器无法被调用的情况
 > [!NOTE]
 > 开始前，请确保电脑已正确安装并配置了 ADB 工具。
 >
@@ -142,14 +143,73 @@
 > ```
 > 如果能正常显示版本号，即表示 ADB 已正确安装。如果没看到版本号，请确保 ADB 已正确安装。\
 > 如果你还不知道怎么样将电视盒子连接电脑至并授权 ADB，那么请参阅文档：[解除 Bootloader 锁定](unlock_bootloader) 中的 [启用 ADB 调试 功能](unlock_bootloader#启用-adb-调试-功能) 和 [连接电脑并授权 ADB](unlock_bootloader#连接电脑并授权-adb) 章节。
-> 
+
+首先，请先安装一个支持文件选择功能的文件管理器\
+本文档中使用的文件管理器为 [文件管理器+](https://play.google.com/store/apps/details?id=com.alphainventor.filemanager)
+
+   你可以使用下列 ADB 命令进行安装:
+   ```shell
+   adb install <本地安装包文件路径> 
+   # 使用示例: 安装电脑 D 盘 MiBox5 文件夹中的 File_Manager.apk
+   $ adb install "D:\MiBox5\File_Manager.apk"
+   # 期望返回的信息
+   Performing Streamed Install
+   Success
+   ```
+   ::: info 说明
+   安装完成后建议先运行一次这些应用，以便应用申请必要权限。
+   :::
+
+安装完成后你可以通过以下两种方法来尝试修复文件管理器无法被调用的情况\
+请根据实际情况来选择一个最适合自己的方法
+
+### 方法一 : 通过 ADB 来设置默认应用
+
+你可以使用下列 ADB 命令来打开设置对话框:
+   ```shell
+   adb shell "am start -a android.intent.action.OPEN_DOCUMENT -c android.intent.category.OPENABLE -t '*/*'"
+   # 期望返回的信息
+   Starting: Intent { act=android.intent.action.OPEN_DOCUMENT cat=[android.intent.category.OPENABLE] typ=*/* }
+   ```
+   命令执行完成后，你将看到如下图所示的默认应用选择对话框
+
+   <img height="300" src="./images/screenshots/dialog_setdefault_filemanager.png">
+
+   请务必在对话框中选择 **文件管理器** 并点击 **始终** 选项
+
+   完成后你将进入到文件管理器的文件选择界面中\
+   在当前步骤中，**你不需要通过选择任何文件**，**直接退出即可**
+
+   > [!TIP]
+   > 如果你发现系统提示"您没有可执行此操作的应用"\
+   > 请阅读章节: [常见问题](#常见问题)
+
+### 方法二 : 禁用系统应用 Activity Stup <Badge type="danger" text="不推荐" />
+> [!CAUTION] 注意，此方法治标不治本
+> 如果要使用此方法，请保证你的盒子系统中**只有一个拥有文件选择功能的应用**\
+> 如果你安装了多个拥有文件选择功能的应用，那么请将其他具有此能力的应用全部禁用或卸载掉\
+> Activity Stup 也被系统算作拥有文件选择功能的应用，因此也需要禁用\
+> 如果不禁用，在后续选择 init_boot 镜像的过程中系统会因为某种原因陷入到某个无限循环中，导致无法正常调用正确的文件管理器
+
+你可以使用下列 ADB 命令进行禁用:
+   ```shell
+   adb shell pm disable-user --user 0 com.android.tv.frameworkpackagestubs
+   # 期望返回的信息
+   Package com.android.tv.frameworkpackagestubs new state: disabled-user
+   ```
+   
+   > [!TIP] 为什么要禁用 Activity Stup ?
+   > 在 Android TV 14 中，系统没有提供 DocumentUI 来让你执行相关操作，取而代之的是 Activity Stup \
+   > 但问题是 Activity Stup 本身并不提供任何文件选择相关的功能\
+   > 因此，为了确保 Magisk 修补镜像时能够正常调用安装的第三方文件管理器，需要暂时禁用 Activity Stup 来保证 Magisk 能够正常调用安装的第三方文件管理器
+
+## 修补并刷入 init_boot 镜像
+> [!NOTE]
 > 本文档中使用的 Magisk 版本为 29.0\
 > 由于 Magisk 在不同版本间可能调整修补逻辑、UI 界面或镜像打包方式，建议在操作前确保使用 **相同或更新的稳定版本**。\
 > 若你使用的版本不同，请注意界面或步骤可能略有差异。
 
-1. 在电视盒子上安装下列应用并授予相关权限:
-   - [Magisk](https://github.com/topjohnwu/Magisk)
-   - [文件管理器+](https://play.google.com/store/apps/details?id=com.alphainventor.filemanager)
+1. 在电视盒子上安装[Magisk 应用](https://github.com/topjohnwu/Magisk)
 
    你可以使用下列 ADB 命令进行安装:
    - 安装 Magisk 应用
@@ -161,36 +221,8 @@
       Performing Streamed Install
       Success
       ```
-   - 安装 文件管理器+ 应用
-      ```shell
-      adb install <本地安装包文件路径> 
-      # 使用示例: 安装电脑 D 盘 MiBox5 文件夹中的 File_Manager.apk
-      $ adb install "D:\MiBox5\File_Manager.apk"
-      # 期望返回的信息
-      Performing Streamed Install
-      Success
-      ```
 
-      ::: info 说明
-      安装完成后建议先运行一次这些应用，以便应用申请必要权限。
-      :::
-
-2. 禁用系统应用: Activity Stup
-
-   你可以使用下列 ADB 命令进行禁用:
-      ```shell
-      adb shell pm disable-user --user 0 com.android.tv.frameworkpackagestubs
-      # 期望返回的信息
-      Package com.android.tv.frameworkpackagestubs new state: disabled-user
-      ```
-   
-      > [!TIP] 为什么要禁用 Activity Stup ?
-      > 在 Android TV 14 中，系统没有提供 DocumentUI 来让你执行相关操作，取而代之的是 Activity Stup \
-      > 在某些场景中 Activity Stup 会和 DocumentUI 一样，来强行接管文件选择相关操作\
-      > 但问题是 Activity Stup 本身并不提供任何文件选择相关的功能\
-      > 因此，为了确保 Magisk 修补镜像时能够正常调用安装的第三方文件管理器，需要暂时禁用 Activity Stup 来保证 Magisk 能够正常调用安装的第三方文件管理器
-
-3. 将 init_boot 镜像上传至设备
+2. 将 init_boot 镜像上传至设备
 
    你可以使用下列 ADB 命令进行上传:
       ```shell
@@ -201,7 +233,7 @@
       D:\MiBox5\backups\init_boot.img: 1...ile pushed, 0 skipped. 98.6 MB/s (8388608 bytes in 0.081s) 
       ```
 
-4. 打开 Magisk 应用来修补 `init_boot` 镜像
+3. 打开 Magisk 应用来修补 `init_boot` 镜像
 
    使用下列命令来打开 Magisk 应用:
       ```shell
@@ -216,6 +248,9 @@
    <img height="300" src="./images/screenshots/app_magisk_install.png">
 
    在打开的文件选择界面中找到并选择你上传的 init_boot 镜像
+
+   > [!TIP] 文件选择页面没有出现？
+   > 请阅读章节: [常见问题](#常见问题)
 
    <img height="300" src="./images/screenshots/app_filemanager.png">
 
@@ -246,14 +281,7 @@
    ```
    通过日志我们可以得知，修补过的镜像被输出到了`/storage/emulated/0/Download`目录中，镜像名为 `magisk_patched-29000_exeo8.img`
 
-> [!TIP]
-> 没有看到文件选择界面？ 请尝试按照以下几个方向来检查：
->
-> * 检查是否禁用了 Activity Stup 应用。
-> * 检查安装的文件管理器是否被授予必要权限。
-> * 检查是否安装了具备文件选择能力并且兼容 Android TV 14 的文件管理器。
-
-5. 使用 `adb pull` 命令将修补过的镜像导出至电脑
+4. 使用 `adb pull` 命令将修补过的镜像导出至电脑
    ```shell
    adb pull <镜像在盒子上的位置> <镜像在你电脑上的导出位置>
    # 使用示例: 将盒子 /sdcard/Download 目录中的 magisk_patched-29000_exeo8.img 导出到电脑 D 盘 \MiBox5 目录中
@@ -261,12 +289,12 @@
    # 期望返回的信息
    /sdcard/Download/magisk_patched-29000_exeo8.img: 1 file pulled, 0 skipped. 35.9 MB/s (8388608 bytes in 0.223s)
    ```
-6. 使用下列命令将电视盒子重启到 Fastboot 模式中:
+5. 使用下列命令将电视盒子重启到 Fastboot 模式中:
    ```shell
    adb shell reboot bootloader
    ```
 
-7. 使用下列命令来刷入修补过的 `init_boot` 镜像:
+6. 使用下列命令来刷入修补过的 `init_boot` 镜像:
    ```shell
    fastboot flash init_boot <镜像在你电脑上的位置>
    # 使用示例: 将电脑 D 盘 \MiBox5 文件夹中的 magisk_patched-29000_exeo8.img 刷入到盒子的 init_boot 分区中
@@ -276,18 +304,18 @@
    Writing 'init_boot_a'                              OKAY [  0.102s]
    Finished. Total time: 2.166s
    ```
-8. 刷入完成后使用下列命令来重启设备
+7. 刷入完成后使用下列命令来重启设备
    ```shell
    fastboot reboot
    ```
 
-9. 进入系统后，打开 Magisk 应用来确认安装状态
+8. 进入系统后，打开 Magisk 应用来确认安装状态
 
    如果提示需要修复环境，请点击确认，点击确认后系统将在5秒后自动重启。
 
    <img height="300" src="./images/screenshots/app_magisk_install_2.png">
 
-10. 重新启用之前禁用的系统应用: Activity Stup <Badge type="tip" text="可选操作" />
+9. 重新启用之前禁用的系统应用: Activity Stup <Badge type="tip" text="可选操作" />
 
     你可以使用下列 ADB 命令进行启用:
       ```shell
@@ -386,3 +414,43 @@
 > 若你选择继续，则代表你已经充分了解并可自行承担全部风险，并自愿承担责任，作者对此操作产生的任何后果概不负责。
 
 </details>
+
+## 常见问题
+
+### 系统提示"您没有可执行此操作的应用"
+
+**该问题可能在以下场景中出现:**
+- 正通过 ADB 来设置默认的文件应用
+- 正在 Magisk 应用中选择要修补的镜像
+
+**解决方法:**
+- 检查是否安装了支持文件选择功能的文件管理器
+- 检查 Activity Stup 是否被错误的设置成了默认应用
+
+检查完成后请根据情况来重新阅读章节: [修复文件管理器无法被调用的情况](#修复文件管理器无法被调用的情况)
+
+### 不小心把 Activity Stup 设置成默认应用了，如何取消
+
+> [!IMPORTANT] 重要提醒
+> 此解决方案依赖系统中的原生设置\
+> 如果原生设置不可用，那么将无法使用此解决方案。\
+> 目前尚不清楚是否存在 ADB 命令可以对某个应用执行 **清除默认操作** 的功能
+
+你可以使用下列 ADB 命令来打开 Activity Stup 在原生设置中的应用信息页面
+```shell
+adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:com.android.tv.frameworkpackagestubs
+```
+应用信息页面打开后，请点击 **清除默认操作** 选项
+
+<img height="300" src="./images/screenshots/app_settings_appinfo_activitystup_1.png">
+
+操作完成后请根据情况来重新阅读章节: [修复文件管理器无法被调用的情况](#修复文件管理器无法被调用的情况)
+
+### 在 Magisk 应用中选择要修补的镜像的时候应用卡死
+
+出现这个问题则代表你使用了 [方法二 : 禁用系统应用 Activity Stup](#方法二--禁用系统应用-activity-stup) 来解决文件管理器无法被调用的情况
+
+**解决方法:**
+- 检查是否安装了多个支持文件选择功能的文件管理器，如果安装了，请将多余的全部禁用或卸载掉
+- 检查系统应用 Activity Stup 是否被成功禁用
+- 改用 [方法一 : 通过 ADB 来设置默认应用](#方法一--通过-adb-来设置默认应用)

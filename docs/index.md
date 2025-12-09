@@ -64,3 +64,4 @@ next: false
 
 - [小米商城页面](https://www.mi.com/shop/buy/detail?product_id=21291)
 - [使用说明书](https://home.mi.com/views/introduction.html?region=cn&pdid=24752&model=xiaomi.tvbox.5b1)
+- [产品百科 - 米家](https://home.mi.com/webapp/content/baike/product/index.html?model=xiaomi.tvbox.5b1)
