@@ -394,6 +394,6 @@ _※ 说明：_
 > 在非必要情况下不建议执行相关操作，如你选择继续则代表你已经充分了解并可自行承担全部风险，并自愿承担责任，作者对此操作产生的任何后果概不负责。
 
 ### 目录
-- [如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定](unlock_bootloader.md)
-- [如何通过 DSU 来备份 小米盒子 5 (MOB2MB-5P) 的系统镜像](backup.md)
-- [如何 Root 小米盒子 5 (MOB2MB-5P)](root.md)
+- [如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定](https://xpxp233333.github.io/xiaomi-mibox5-guides/unlock_bootloader.html)
+- [如何通过 DSU 来备份 小米盒子 5 (MOB2MB-5P) 的系统镜像](https://xpxp233333.github.io/xiaomi-mibox5-guides/backup.html)
+- [如何 Root 小米盒子 5 (MOB2MB-5P)](https://xpxp233333.github.io/xiaomi-mibox5-guides/root.html)

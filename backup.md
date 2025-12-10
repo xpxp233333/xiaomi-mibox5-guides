@@ -1,6 +1,8 @@
 #  如何通过 DSU 来备份 小米盒子 5 (MOB2MB-5P) 的系统镜像
 此文档介绍了如何通过 DSU 来备份 小米盒子 5 (MOB2MB-5P) 的系统镜像。
 
+## 点击此处来查看此文档的 [最新版本](https://xpxp233333.github.io/xiaomi-mibox5-guides/backup.html)
+
 > [!CAUTION]
 > 此文档中的内容涉及到 dd 命令的使用，错误的使用可能导致：
 > - 硬件损坏

@@ -1,6 +1,8 @@
 #  如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定
 此文档介绍了如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定。
 
+## 点击此处来查看此文档的 [最新版本](https://xpxp233333.github.io/xiaomi-mibox5-guides/unlock_bootloader.html)
+
 > [!CAUTION]
 > 解锁 Bootloader 会导致设备面临各类安全风险，并可能对设备造成不可预估的影响，可能导致：
 > - 硬件损坏

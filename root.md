@@ -1,6 +1,8 @@
 #  如何 Root 小米盒子 5 (MOB2MB-5P)
 此文档介绍了如何 Root 小米盒子 5 (MOB2MB-5P)。
 
+## 点击此处来查看此文档的 [最新版本](https://xpxp233333.github.io/xiaomi-mibox5-guides/root.html)
+
 > [!CAUTION]
 > 对设备进行 Root 会导致设备面临各类安全风险，并可能对设备造成不可预估的影响，可能导致：
 > - 硬件损坏

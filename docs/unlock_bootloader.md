@@ -146,9 +146,6 @@
    * 完成后，"OEM 解锁"选项的状态应如下图所示
 
       <img height="300" src="./images/screenshots/app_settings_developmentactivity_3.png">
-::: info 说明
-由于未能提前保存相关截图，此图片截取自其他设备，仅供参考，请以实际设备为准。
-:::
 
 ## 进入 Fastboot 模式并解除 Bootloader 锁定
 > [!WARNING] 重要提醒：

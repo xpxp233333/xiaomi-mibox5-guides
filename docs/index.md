@@ -57,10 +57,13 @@ next: false
 - [小米盒子信息](./root#小米盒子信息)
 - [前置要求](./root#前置要求)
 - [提取 init_boot 镜像](./root#提取-init_boot-镜像)
+- [解决文件管理器的调用问题](./root#解决文件管理器的调用问题)
 - [修补并刷入 init_boot 镜像](./root#修补并刷入-init_boot-镜像)
 - [~~额外内容: 保留 Root 来安装 OTA 更新~~](./root#额外内容-保留-root-来安装-ota-更新) <Badge type="danger" text="未实机验证" /> <Badge type="danger" text="WIP" /> <Badge type="tip" text="可选操作" />
+- [常见问题](./root#常见问题)
 
 ## 官方页面
 
 - [小米商城页面](https://www.mi.com/shop/buy/detail?product_id=21291)
 - [使用说明书](https://home.mi.com/views/introduction.html?region=cn&pdid=24752&model=xiaomi.tvbox.5b1)
+- [产品百科 - 米家](https://home.mi.com/webapp/content/baike/product/index.html?model=xiaomi.tvbox.5b1)
