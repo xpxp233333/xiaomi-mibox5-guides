@@ -59,7 +59,7 @@ next: false
 - [提取 init_boot 镜像](./root#提取-init_boot-镜像)
 - [解决文件管理器的调用问题](./root#解决文件管理器的调用问题)
 - [修补并刷入 init_boot 镜像](./root#修补并刷入-init_boot-镜像)
-- [~~额外内容: 保留 Root 来安装 OTA 更新~~](./root#额外内容-保留-root-来安装-ota-更新) <Badge type="danger" text="未实机验证" /> <Badge type="danger" text="WIP" /> <Badge type="tip" text="可选操作" />
+- [额外内容: 保留 Root 来安装 OTA 更新](./root#额外内容-保留-root-来安装-ota-更新) <Badge type="danger" text="主要内容未实机验证" /> <Badge type="danger" text="WIP" /> <Badge type="tip" text="可选操作" />
 - [常见问题](./root#常见问题)
 
 ## 官方页面
