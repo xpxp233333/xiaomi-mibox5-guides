@@ -1,3 +1,63 @@
+.custom-block.note a,
+.custom-block.note code {
+  color: var(--note-link-color);
+}
+
+.custom-block.note a:hover,
+.custom-block.note a:hover > code {
+  color: var(--note-link-color);
+}
+
+.custom-block.important a,
+.custom-block.important code {
+  color: var(--important-link-color);
+}
+
+.custom-block.important a:hover,
+.custom-block.important a:hover > code {
+  color: var(--important-link-color);
+}
+
+.custom-block.tip a,
+.custom-block.tip code {
+  color: var(--tip-link-color);
+}
+
+.custom-block.tip a:hover,
+.custom-block.tip a:hover > code {
+  color: var(--tip-link-color);
+}
+
+.custom-block.warning a,
+.custom-block.warning code {
+  color: var(--warning-link-color);
+}
+
+.custom-block.warning a:hover,
+.custom-block.warning a:hover > code {
+  color: var(--warning-link-color);
+}
+
+.custom-block.danger a,
+.custom-block.danger code {
+  color: var(--danger-link-color);
+}
+
+.custom-block.danger a:hover,
+.custom-block.danger a:hover > code {
+  color: var(--danger-link-color);
+}
+
+.custom-block.caution a,
+.custom-block.caution code {
+  color: var(--caution-link-color);
+}
+
+.custom-block.caution a:hover,
+.custom-block.caution a:hover > code {
+  color: var(--caution-link-color);
+}
+
 /**
  * Component: Custom Block
  * -------------------------------------------------------------------------- */
@@ -14,23 +74,35 @@
   --vp-custom-block-info-text: var(--vp-c-text-1);
   --vp-custom-block-info-bg: #8e96aa59;
 
+  --vp-custom-block-note-code-bg: #4493f83a;
   --vp-custom-block-note-text: var(--vp-c-text-1);
   --vp-custom-block-note-bg: #4493f880;
+  --note-link-color: #18519b;
 
+  --vp-custom-block-important-code-bg: #ab7df83a;
   --vp-custom-block-important-text: var(--vp-c-text-1);
   --vp-custom-block-important-bg: #ab7df880;
+  --important-link-color: #6533b7;
 
+  --vp-custom-block-tip-code-bg: #3fb9503a;
   --vp-custom-block-tip-text: var(--vp-c-text-1);
   --vp-custom-block-tip-bg: #3fb95080;
+  --tip-link-color: #22632b;
 
+  --vp-custom-block-warning-code-bg: #d299223a;
   --vp-custom-block-warning-text: var(--vp-c-text-1);
   --vp-custom-block-warning-bg: #d2992280;
+  --warning-link-color: #734d00;
 
+  --vp-custom-block-danger-code-bg: #f851493a;
   --vp-custom-block-danger-text: var(--vp-c-text-1);
   --vp-custom-block-danger-bg: #f8514980;
+  --danger-link-color: #911913;
 
+  --vp-custom-block-caution-code-bg: #f851493a;
   --vp-custom-block-caution-text: var(--vp-c-text-1);
   --vp-custom-block-caution-bg: #f8514980;
+  --caution-link-color: #911913;
 
   --vp-custom-block-details-text: var(--vp-c-text-1);
   --vp-custom-block-details-bg: #8e96aa59;
@@ -40,23 +112,35 @@
   --vp-custom-block-info-text: var(--vp-c-text-1);
   --vp-custom-block-info-bg: #8e96aa33;
 
+  --vp-custom-block-note-code-bg: #4493f83a;
   --vp-custom-block-note-text: var(--vp-c-text-1);
   --vp-custom-block-note-bg: #4493f859;
+  --note-link-color: #7cb5ff;
 
+  --vp-custom-block-important-code-bg: #ab7df83a;
   --vp-custom-block-important-text: var(--vp-c-text-1);
   --vp-custom-block-important-bg: #ab7df859;
+  --important-link-color: #c6a3ff;
 
+  --vp-custom-block-tip-code-bg: #3fb9503a;
   --vp-custom-block-tip-text: var(--vp-c-text-1);
   --vp-custom-block-tip-bg: #3fb95059;
+  --tip-link-color: #48d35b;
 
+  --vp-custom-block-warning-code-bg: #d299223a;
   --vp-custom-block-warning-text: var(--vp-c-text-1);
   --vp-custom-block-warning-bg: #d2992259;
+  --warning-link-color: #f0af27;
 
+  --vp-custom-block-danger-code-bg: #f852493a;
   --vp-custom-block-danger-text: var(--vp-c-text-1);
   --vp-custom-block-danger-bg: #f8514959;
+  --danger-link-color: #ff8b85;
 
+  --vp-custom-block-caution-code-bg: #f852493a;
   --vp-custom-block-caution-text: var(--vp-c-text-1);
   --vp-custom-block-caution-bg: #f8514959;
+  --caution-link-color: #ff8b85;
 
   --vp-custom-block-details-text: var(--vp-c-text-1);
   --vp-custom-block-details-bg: #8e96aa33;
@@ -66,5 +150,8 @@
  * 容器标题字体大小
  * -------------------------------------------------------------------------- */
 .custom-block-title {
+    margin: 32px 0 0;
+    letter-spacing: -0.01em;
+    line-height: 28px;
     font-size: 20px;
 }

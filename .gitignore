@@ -2,3 +2,5 @@ node_modules
 .vitepress/dist
 .vitepress/cache
 xiaomi-mibox5-info.md
+docs/backup_coreelec.md
+docs/markdown-examples.md
