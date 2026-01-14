@@ -155,3 +155,38 @@
     line-height: 28px;
     font-size: 20px;
 }
+
+/**
+ * DocNotic按钮配色
+ * -------------------------------------------------------------------------- */
+
+.doc-notice button {
+  background: var(--vp-button-brand-bg);
+  color: rgb(255, 255, 255);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background-color 0.5s ease;
+}
+
+.doc-notice button:hover {
+  background: var(--vp-button-brand-hover-bg);
+  color: var(--vp-button-brand-hover-text);
+}
+
+/**
+ * DocNotic文案配色
+ * -------------------------------------------------------------------------- */
+ .doc-notice-content a{
+  color: var(--vp-c-brand-1);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition:
+    color 0.25s,
+    opacity 0.25s;
+}
+
+ .doc-notice-content a:hover{
+  color: var(--vp-c-brand-2);
+}

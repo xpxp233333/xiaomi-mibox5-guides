@@ -1,5 +1,10 @@
 ---
 prev: false
+DocNotice:
+  enabled: true
+  noticekey: 'hardware_ai20260110'
+  text: '<p>此文档使用了 AI 技术来进行润色处理，相关内容均已经过检查。</p><p>若无法接受 AI 辅助，请勿参考本文进行任何操作并建议您立即关闭此页面，以免造成不必要的麻烦。</p>'
+  buttontext: "我已了解，不再提醒"
 ---
 
 # 硬件信息

@@ -1,5 +1,9 @@
 ---
 next: false
+DocNotice:
+  enabled: true
+  dismissible: false
+  text: '<p>此处列出的文档均使用了 AI 技术来进行润色处理，相关内容已经过检查。</p><p>若无法接受 AI 辅助，请勿参考除<a href="/xiaomi-mibox5-guides/#官方页面">官方页面</a>部分以外的任何内容。</p>'
 ---
 
 # 小米盒子5 (MOB2MB-5P)

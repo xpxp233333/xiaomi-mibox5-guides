@@ -1,3 +1,11 @@
+---
+DocNotice:
+  enabled: true
+  noticekey: 'root_ai20260110'
+  text: '<p>此文档使用了 AI 技术来进行润色处理，相关内容均已经过检查。</p><p>若无法接受 AI 辅助，请勿参考本文进行任何操作并建议您立即关闭此页面，以免造成不必要的麻烦。</p>'
+  buttontext: '我已了解，不再提醒'
+---
+
 #  如何 Root
 此文档介绍了如何 Root 小米盒子 5 (MOB2MB-5P)。
 
@@ -185,11 +193,11 @@
    > 如果你发现系统提示"您没有可执行此操作的应用"\
    > 请阅读章节: [常见问题](#常见问题)
 
-### 方法二 : 禁用系统应用 Activity Stup <Badge type="danger" text="不推荐" />
+### 方法二 : 禁用系统应用 Activity Stub <Badge type="danger" text="不推荐" />
 > [!CAUTION] 注意，此方法治标不治本
 > 如果要使用此方法，请保证你的盒子系统中**只有一个拥有文件选择功能的应用**\
 > 如果你安装了多个拥有文件选择功能的应用，那么请将其他具有此能力的应用全部禁用或卸载掉\
-> Activity Stup 也被系统算作拥有文件选择功能的应用，因此也需要禁用\
+> Activity Stub 也被系统算作拥有文件选择功能的应用，因此也需要禁用\
 > 如果不禁用，在后续选择 init_boot 镜像的过程中系统会因为某种原因陷入到某个无限循环中，导致无法正常调用正确的文件管理器
 
 你可以使用下列 ADB 命令进行禁用:
@@ -199,10 +207,10 @@
    Package com.android.tv.frameworkpackagestubs new state: disabled-user
    ```
    
-   > [!TIP] 为什么要禁用 Activity Stup ?
-   > 在 Android TV 14 中，系统没有提供 DocumentUI 来让你执行相关操作，取而代之的是 Activity Stup \
-   > 但问题是 Activity Stup 本身并不提供任何文件选择相关的功能\
-   > 因此，为了确保 Magisk 修补镜像时能够正常调用安装的第三方文件管理器，需要暂时禁用 Activity Stup 来保证 Magisk 能够正常调用安装的第三方文件管理器
+   > [!TIP] 为什么要禁用 Activity Stub ?
+   > 在 Android TV 14 中，系统没有提供 DocumentUI 来让你执行相关操作，取而代之的是 Activity Stub \
+   > 但问题是 Activity Stub 本身并不提供任何文件选择相关的功能\
+   > 因此，为了确保 Magisk 修补镜像时能够正常调用安装的第三方文件管理器，需要暂时禁用 Activity Stub 来保证 Magisk 能够正常调用安装的第三方文件管理器
 
 ## 修补并刷入 init_boot 镜像
 > [!NOTE]
@@ -316,7 +324,7 @@
 
    <img height="300" src="./images/screenshots/app_magisk_install_2.png">
 
-9. 重新启用之前禁用的系统应用: Activity Stup <Badge type="tip" text="可选操作" />
+9. 重新启用之前禁用的系统应用: Activity Stub <Badge type="tip" text="可选操作" />
 
     你可以使用下列 ADB 命令进行启用:
       ```shell
@@ -348,7 +356,7 @@
 >   (解包过程请参考章节: [提取 init_boot 镜像-从全量 OTA 更新包中提取](#方法二--从全量-ota-更新包中提取))
 > 3. 成功更新并获取可用的 init_boot 后请重新阅读章节: [修补并刷入 init_boot 镜像](#修补并刷入-init_boot-镜像)
 > 
-> 当然你也可以通过之前提过的 [DSU 备份法](./backup) 来备份你需要的镜像\
+> 当然你也可以通过之前提过的 [DSU 备份法](./backup) 在系统完成更新后来重新备份你需要的镜像\
 > 请根据实际情况选择最适合的方法
 
 > [!CAUTION] 警告
@@ -438,32 +446,32 @@
 
 **解决方法:**
 - 检查是否安装了支持文件选择功能的文件管理器
-- 检查 Activity Stup 是否被错误的设置成了默认应用
+- 检查 Activity Stub 是否被错误的设置成了默认应用
 
 检查完成后请根据情况来重新阅读章节: [解决文件管理器的调用问题](#解决文件管理器的调用问题)
 
-### 不小心把 Activity Stup 设置成默认应用了，如何取消
+### 不小心把 Activity Stub 设置成默认应用了，如何取消
 
 > [!IMPORTANT] 重要提醒
 > 此解决方案依赖系统中的原生设置\
 > 如果原生设置不可用，那么将无法使用此解决方案。\
 > 目前尚不清楚是否存在可以对某个应用执行 **清除默认操作** 的 ADB 命令
 
-你可以使用下列 ADB 命令来打开 Activity Stup 在原生设置中的应用信息页面
+你可以使用下列 ADB 命令来打开 Activity Stub 在原生设置中的应用信息页面
 ```shell
 adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:com.android.tv.frameworkpackagestubs
 ```
 应用信息页面打开后，请点击 **清除默认操作** 选项
 
-<img height="300" src="./images/screenshots/app_settings_appinfo_activitystup_1.png">
+<img height="300" src="./images/screenshots/app_settings_appinfo_activitystub_1.png">
 
 操作完成后请根据情况来重新阅读章节: [解决文件管理器的调用问题](#解决文件管理器的调用问题)
 
 ### 在 Magisk 应用中选择要修补的镜像的时候应用卡死
 
-出现这个问题则代表你使用了 [方法二 : 禁用系统应用 Activity Stup](#方法二--禁用系统应用-activity-stup) 来解决文件管理器无法被调用的情况
+出现这个问题则代表你使用了 [方法二 : 禁用系统应用 Activity Stub](#方法二--禁用系统应用-activity-stub) 来解决文件管理器无法被调用的情况
 
 **解决方法:**
 - 检查是否安装了多个支持文件选择功能的文件管理器，如果安装了，请将多余的全部禁用或卸载掉
-- 检查系统应用 Activity Stup 是否被成功禁用
+- 检查系统应用 Activity Stub 是否被成功禁用
 - 改用 [方法一 : 通过 ADB 来设置默认应用](#方法一--通过-adb-来设置默认应用)
