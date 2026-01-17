@@ -31,7 +31,6 @@ DocNotice:
 - [提取 init_boot 镜像](#提取-init_boot-镜像)
 - [解决文件管理器的调用问题](#解决文件管理器的调用问题)
 - [修补并刷入 init_boot 镜像](#修补并刷入-init_boot-镜像)
-- [额外内容: 保留 Root 来安装 OTA 更新](#额外内容-保留-root-来安装-ota-更新) <Badge type="danger" text="主要内容未实机验证" /> <Badge type="danger" text="WIP" /> <Badge type="tip" text="可选操作" />
 - [常见问题](#常见问题)
 
 ## 小米盒子信息
@@ -339,16 +338,21 @@ DocNotice:
 
 <img height="300" src="./images/screenshots/app_magisk.png">
 
+## 常见问题
 
-## 额外内容: 保留 Root 来安装 OTA 更新 <Badge type="danger" text="主要内容未实机验证" /> <Badge type="danger" text="WIP" /> <Badge type="tip" text="可选操作" />
+### 如何保留 Root 来安装 OTA 更新
+> [!NOTE]
+> 经测试，小米电视在 OTA 安装完成后会直接自动重启，用户无法在重启前打开 Magisk 并执行"安装到未使用的槽位 (OTA 后)"操作。\
+> 鉴于小米盒子与小米电视运行的都是 HyperOS 系统，因此可以合理推断该限制同样适用于小米盒子 5。
 
 > [!WARNING] 说明
-> 目前 小米盒子 5 采取的更新策略疑似为分批更新\
-> 在这种情况下，更新提示界面和安装界面与常规更新存在明显差异，比如:
+> 小米盒子 5 使用了 **虚拟 A/B 系统更新** 机制\
+> 在正常情况中，安装更新前需要进行一些额外操作才能保证 Root 在更新后也能够正常使用\
+> 但 小米盒子 5 的更新流程与常规 Android TV 设备的更新流程存在明显差异，比如:
 > - update_engine 完成系统更新后设备会立即重启
 > - 不给你任何通过操作 Magisk 应用来向未使用槽位安装修补过镜像的机会
->
-> **因此现阶段推荐暂停更新，待本次更新全面推送后再尝试安装**
+> 
+> **因此在当前系统版本中，理论上不存在安全的保留 Root 来安装 OTA 更新的方法**
 > 
 > 如果你的确要更新，那么请按照以下步骤来准备：
 > 1. 使用 ADB 连接设备，以便通过日志查看 OTA 包下载 URL
@@ -358,85 +362,9 @@ DocNotice:
 > 
 > 当然你也可以通过之前提过的 [DSU 备份法](./backup) 在系统完成更新后来重新备份你需要的镜像\
 > 请根据实际情况选择最适合的方法
-
-> [!CAUTION] 警告
-> 下方的内容目前仍处于**未验证状态**
-> 
-> 若你选择继续，则代表你已经充分了解并可自行承担全部风险，并自愿承担责任，作者对此操作产生的任何后果概不负责。
-<details>
-<summary>仍要继续？ 点击此处来查看相关内容</summary>
-
-> [!NOTE] 说明
-> 小米盒子 5 使用了 **虚拟 A/B 系统更新** 机制\
-> 因此，在安装更新前需要进行一些额外操作才能保证 Root 在更新后也能够正常使用
-
-> [!TIP] 什么是 A/B 系统更新?
-> 旧版 A/B 系统更新（也称为无缝更新）的目标是确保在无线下载 (OTA) 更新期间在磁盘上保留一个可正常启动和使用的系统。采用这种方式可以降低更新之后设备无法启动的可能性，这意味着用户需要将设备送到维修和保修中心进行更换和刷机的情况将会减少。
 >
-> ### 什么是 虚拟 A/B 系统更新?
-> 虚拟 A/B 是在旧版 A/B 更新和非 A/B 的基础上构建的；后者已在 Android 15 中废弃，以减少更新的空间开销。\
-> 虚拟 A/B 实际上并没有额外的动态分区槽位，相反，增量会写入快照，然后在确认成功启动后合并到基本分区。虚拟 A/B 使用 Android 专用的快照格式。
-> 
-> 如需获取更多信息，请参阅: [Android Developers](https://source.android.com/docs/core/ota)
+> 如需查看**已被存档并被证明为无效**的"如何保留 Root 来安装 OTA 更新"章节，请[点击此处](./Invalid/doc_root-ota)
 
-
-如果你收到了 OTA 更新，请按照以下方法来进行操作
-1. 打开设置，并转到 **关于本机 > 系统版本**
-
-   <img height="300" src="./images/screenshots/app_settings_update.png">
-
-2. 点击"立即下载"，并等待更新下载并安装完成
-
-   <img height="300" src="./images/screenshots/app_update_1.png">
-
-   ::: info 说明
-   此图片来自其他型号设备，仅供参考，请以实际情况为准。
-   :::
-
-   > [!NOTE]
-   > 下载并安装完成后先不要重启设备
-
-3. 下载完成后退出更新界面并返回桌面，然后打开 Magisk 应用
-
-   <img height="300" src="./images/screenshots/applist_magisk.png">
-
-   或是使用使用下列命令来打开 Magisk 应用:
-   ```shell
-   adb shell am start com.topjohnwu.magisk/com.topjohnwu.magisk.ui.MainActivity
-   ```
-
-4. 进入 Magisk 应用主界面后点击 **安装 > 安装到未使用的槽位 (OTA后) > 开始**
-
-   <img height="300" src="./images/screenshots/app_magisk_install_3.png">
-
-   点击后系统将自动执行安装安装过程，并在界面中显示安装日志
-   
-5. 重新打开系统更新界面，并点击重启
-
-6. 进入系统后，打开 Magisk 应用来确认安装状态
-
-至此，你已经完成 OTA 更新过程
-
-下图为正常安装的 Magisk 应用主界面
-
-<img height="300" src="./images/screenshots/app_magisk.png">
-
-> [!WARNING] 注意
-> 当设备完成 OTA 更新后，建议立即备份相关系统镜像，以备不时之需。
-
-::: info 说明
-- A/B 系统更新 的介绍引自 [Android Developers](https://source.android.com/docs/core/ota/ab)。
-- 若更新后 Magisk 状态异常，可尝试重新备份并修补新版本的 init_boot.img 来刷入，以恢复 Root。
-:::
-
-> [!CAUTION] 警告
-> 此章节的主要内容目前仍处于**未验证状态**
-> 
-> 若你选择继续，则代表你已经充分了解并可自行承担全部风险，并自愿承担责任，作者对此操作产生的任何后果概不负责。
-
-</details>
-
-## 常见问题
 
 ### 系统提示"您没有可执行此操作的应用"
 
