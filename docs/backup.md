@@ -6,11 +6,11 @@ DocNotice:
   buttontext: '我已了解，不再提醒'
 ---
 
-#  通过 DSU 来备份分区
+# 通过 DSU 来备份分区
 此文档介绍了如何通过 DSU 来备份 小米盒子 5 (MOB2MB-5P) 的系统分区。
 
 > [!CAUTION] 操作前必读
-> 此文档中的内容涉及到 dd 命令的使用，错误的使用可能导致：
+> 此文档中的内容涉及到 dd 命令的使用，错误的使用可能导致:
 > - 硬件损坏
 > - 数据丢失
 > - 设备永久性变砖
@@ -50,32 +50,32 @@ DocNotice:
 > 此文档中出现的所有命令输出示例仅供参考，请以实际情况为准。
 
 ## 前置要求
-- 小米盒子 5 (MOB2MB-5P) 一台（已解除 Bootloader 锁定）
-- 一台电脑：Windows / Linux / macOS 均可
+- 小米盒子 5 (MOB2MB-5P) 一台 (已解除 Bootloader 锁定)
+- 一台电脑: Windows / Linux / macOS 均可
 - 一条可靠的 USB 数据线 (可选，如你要使用有线连接方式，请确保线缆为高质量数据线，而非仅支持充电的线缆。)
-   - 若盒子与电脑均为 USB-A 接口，请使用 USB-A 公对 USB-A 公 数据线。
-   - 若电脑拥有 USB-C 接口，也可使用 USB-A 公对 USB-C 公 数据线（即常见的手机数据线）。
-- 电脑已安装下列工具：
+   - 若盒子与电脑均为 USB-A 接口，请使用 USB-A 公对 USB-A 公数据线。
+   - 若电脑拥有 USB-C 接口，也可使用 USB-A 公对 USB-C 公数据线 (即常见的手机数据线) 。
+- 电脑已安装下列工具:
    - [ADB & Fastboot 工具](https://developer.android.com/tools/releases/platform-tools)
    - [Android OTA 镜像解压工具](https://github.com/tobyxdd/android-ota-payload-extractor) (从 **Release** 中下载适用于你设备的最新版本)
    - **保证相关工具 / 驱动运行正常**
 
 ::: info 说明
-- 本文档中提到的 “USB-C” 接口，即为日常生活中经常用到的 “Type-C” 接口。
+- 本文档中提到的 "USB-C" 接口，即为日常生活中经常用到的 "Type-C" 接口。
 - 所有 ADB 相关操作均可以使用无线模式来进行，但是在实际操作流程中，无线模式可能不如有线模式方便，因此不做推荐。
-- 如果你的电视盒子还没有解除 Bootloader 锁定，那么请参阅文档：[解除 Bootloader 锁定](unlock_bootloader)。
+- 如果你的电视盒子还没有解除 Bootloader 锁定，那么请参阅文档: [解除 Bootloader 锁定](unlock_bootloader)。
 - Android OTA 镜像解压工具 为可选工具
    - 你可以使用其他支持解包 **payload.bin** 的类似工具进行相关操作。
-   - 如果你了通过其他方法得到了兼容的带 Root 的 GSI 镜像，你也可以直接使用这个镜像，无需从 OTA 包开始制作。
+   - 如果你通过其他方法得到了兼容的带 Root 的 GSI 镜像，你也可以直接使用这个镜像，无需通过解包 OTA 包开始制作。
    - 如果你选择使用通过其他方式生成或获取的 GSI 镜像，作者无法保证其可用性或与电视盒子的兼容性。请在使用前自行验证镜像兼容性与安全性。
 :::
 
 
 ## 制作并安装 DSU 镜像
 > [!TIP] 动态系统更新 (DSU) 介绍
-> 动态系统更新 (DSU) 是 Android 10 中引入的一项系统功能，可执行以下操作：
+> 动态系统更新 (DSU) 是 Android 10 中引入的一项系统功能，可执行以下操作:
 >
-> * 将新的 GSI（或其他 Android 系统映像）下载到您的设备上。
+> * 将新的 GSI (或其他 Android 系统映像) 下载到您的设备上。
 > * 创建新的动态分区。
 > * 将下载的 GSI 加载到新的分区。
 > * 在设备上将 GSI 作为来宾操作系统启动。
@@ -86,12 +86,12 @@ DocNotice:
 > - 开始前，请确保电视盒子上拥有足够的可用存储空间，并且电视盒子已解除 Bootloader 锁定。
 > - 4PDA 并非厂商官方页面，在浏览内容和使用相关资源的时候，请注意安全。
 > - 你可能需要一个可用的 4PDA 账号才能访问论坛中的资源。
-> - 绝大多数操作都需要依赖 ADB ，如果你还不知道怎么样将电视盒子连接电脑至并授权 ADB，那么请参阅文档：[解除 Bootloader 锁定](unlock_bootloader) 中的 [启用 ADB 调试 功能](unlock_bootloader#启用-adb-调试-功能) 和 [连接电脑并授权 ADB](unlock_bootloader#连接电脑并授权-adb) 章节。
-> - 制作镜像相关的操作为可选操作
->   - 如果你了通过其他方法得到了兼容的带 Root 的 GSI 镜像，你也可以直接使用这个镜像，无需从 OTA 包开始制作。
+> - 绝大多数操作都需要依赖 ADB ，如果你还不知道如何将电视盒子连接至电脑并授权 ADB，那么请参阅文档: [解除 Bootloader 锁定](unlock_bootloader) 中的 [启用 ADB 调试 功能](unlock_bootloader#启用-adb-调试-功能) 和 [连接电脑并授权 ADB](unlock_bootloader#连接电脑并授权-adb) 章节。
+> - 制作镜像相关的步骤为可选
+>   - 如果你通过其他方法得到了兼容的带 Root 的 GSI 镜像，你也可以直接使用这个镜像，无需通过解包 OTA 包开始制作。
 >   - 如果你选择使用通过其他方式生成或获取的 GSI 镜像，作者无法保证其可用性或与电视盒子的兼容性。请在使用前自行验证镜像兼容性与安全性。
 
-1. 获取以下固件：
+1. 获取以下固件:
    - Xiaomi Mi TV Stick 4K Android 14 userdebug 固件 ([下载链接](https://android.googleapis.com/packages/ota-api/package/6f2e8b157af3409c028f9973b74b0179ced2d93d.zip)) ([链接来源: 4PDA](https://4pda.to/forum/index.php?showtopic=1041410&view=findpost&p=135711658))
    - Xiaomi TV Box S 3rd Gen Android 14 固件 ([下载链接](https://android.googleapis.com/packages/ota-api/package/fbc6a620d9d88823fa3b4b4257e7c765eb471cb1.zip)) ([链接来源: 4PDA](https://4pda.to/forum/index.php?showtopic=1104313))
 
@@ -103,13 +103,13 @@ DocNotice:
 
 2. 使用 Android OTA 镜像解压工具 解包第一步中下载的固件 ([点击此处来查看使用方法](https://github.com/tobyxdd/android-ota-payload-extractor))
 
-3. 在解包后的文件中找到以下镜像，并使用这些文件制作可安装的 GSI：
+3. 在解包后的文件中找到以下镜像，并使用这些文件制作可安装的 GSI:
    - product.img (取自 Xiaomi Mi TV Stick 4K)
    - system.img (取自 Xiaomi Mi TV Stick 4K)
    - system_ext.img (取自 Xiaomi Mi TV Stick 4K)
    - vendor.img (取自 Xiaomi TV Box S 3rd Gen)
 
-   找齐上述镜像后，将它们打包为一个 `.zip` 文件（压缩包内不要存在文件夹，并且文件格式建议使用标准 ZIP 格式，如要使用其他格式，请自行测试）。
+   找齐上述镜像后，将它们打包为一个 `.zip` 文件 (压缩包内不要存在文件夹，并且文件格式建议使用标准 ZIP 格式，如要使用其他格式，请自行测试) 。
 
 4. 将制作好的 GSI 上传至设备，你可以使用以下命令进行上传:
    ```shell
@@ -158,24 +158,23 @@ DocNotice:
 
 ::: info 说明
 - 动态系统更新 (DSU) 的介绍引自 [Android Developers](https://developer.android.com/topic/dsu)，如需获取更多信息，请参阅 [Android Developers 上的相关文档](https://source.android.com/docs/core/ota/dynamic-system-updates)。
-- 虽然 [Android Developers](https://developer.android.com/topic/dsu) 指出“在试用 GSI 时不会面临当前系统映像受损的风险”，但在实际情况下，当来宾操作系统具有 root 权限时，错误的操作或恶意镜像仍可能对当前设备上的系统镜像造成损坏。因此，请谨慎操作，注意数据安全。
+- 虽然 [Android Developers](https://developer.android.com/topic/dsu) 指出"在试用 GSI 时不会面临当前系统映像受损的风险"，但在实际情况下，当来宾操作系统具有 Root 权限时，错误的操作或恶意镜像仍可能对当前设备上的系统镜像造成损坏。因此，请谨慎操作，注意数据安全。
 :::
 
 ## 重启到 DSU 系统并执行备份操作
 > [!NOTE]
 > 开始前，请确保电视盒子已解除 Bootloader 锁定。
 > ### Xiaomi HyperOS 3 用户请注意
-> 如果你的设备已经更新到了 HyperOS 3 ，那么则代表你的设备已经至少进行过一次系统更新\
+> 如果你的设备已经更新到了 HyperOS 3，那么代表你的设备已经至少进行过一次系统更新\
 > 因此在操作前请务必使用下列命令来查询当前设备上的活动槽位
 > ```shell
 > adb shell getprop ro.boot.slot_suffix
 > ```
-> 返回 `_a` 则代表为 a 槽，返回 `_b` 则代表为 b 槽
+> 返回 `_a` 表示当前为 a 槽，返回 `_b` 表示当前为 b 槽
 
 > [!WARNING]
-> 在任何情况下都请务必刷入与当前设备系统版本一致的镜像。\
-> 当设备完成 OTA 更新后，建议立即备份相关系统镜像，以备不时之需。\
-> 救砖时，不建议尝试刷入与当前设备系统版本不匹配的镜像。
+> 救砖时，不建议尝试刷入与当前设备系统版本不匹配的镜像。\
+> 当设备完成 OTA 更新后，建议立即备份相关系统镜像，以备不时之需。
 
 1. 在进入 GSI 系统前先查询当前设备上的活动槽位
    ```shell
@@ -186,7 +185,7 @@ DocNotice:
    ```
    此操作可以帮助你在后续的过程中正确地选择需要备份的分区
 
-2. 使用下列命令来启用 GSI：
+2. 使用下列命令来启用 GSI:
    ```shell
    adb shell gsi_tool enable -s
    # 下方为一个使用示例
@@ -199,9 +198,9 @@ DocNotice:
    ```
    强烈建议你仅在能保证安装的 GSI 可以正常使用的情况下才启用粘滞模式
 > [!TIP] 什么是粘滞模式
-> 普通模式 (非粘滞模式) ：在 GSI 中重启即可自动返回原系统，无需任何额外操作。
+> 普通模式 (非粘滞模式) : 在 GSI 中重启即可自动返回原系统，无需任何额外操作。
 >
-> 粘滞模式：在 GSI 中即使重启也不会返回原系统，你需要执行下列命令来手动禁用。
+> 粘滞模式: 在 GSI 中即使重启也不会返回原系统，你需要执行下列命令来手动禁用。
 > ```shell
 > # 这两条命令中的任意一条都可以禁用 GSI，请根据自己的实际情况来进行选择
 > # 通过 ADB :
@@ -240,11 +239,11 @@ DocNotice:
       adb shell
       ```
       完成后你将进入设备的交互式 shell (通常提示符为 $)
-   2. 获取 root 权限
+   2. 获取 Root 权限
       ```shell
       su
       ```
-      完成后你将获得 shell root 权限 (通常提示符为 #)
+      完成后你将获得 shell Root 权限 (通常提示符为 #)
 
       如果提示`/system/bin/sh: su: inaccessible or not found`或其他类似的提示，则代表你使用的 GSI 不支持 Root ，请更换镜像后重试
    3. 列出分区
@@ -271,19 +270,19 @@ DocNotice:
       > **在救砖时，请谨慎处理 bootloader 分区，除非必要，否则不建议执行刷入操作**。
 
    5. 备份指定分区
-      - 根据之前执行`adb shell getprop ro.boot.slot_suffix`后返回的信息可以得知，当前设备的活动槽位为 `a` ，因此在备份时，应该备份 `boot_a` `odm_ext_a` 这种名字中带 `_a` 的分区
+      - 根据之前执行 `adb shell getprop ro.boot.slot_suffix` 返回的信息可以得知，当前设备的活动槽位为 `a` ，因此在备份时，应该备份 `boot_a` `odm_ext_a` 这种名字中带 `_a` 的分区
       - 如果你当前设备的活动槽位为 `b` ，那么在备份时，请备份 `boot_b` `odm_ext_b` 这种名字中带 `_b` 的分区
       - `super` 没有 `_a` `_b` 的设定，因此 `super` 可以直接备份
 
-      以 `boot_a` 为例，使用 `dd` 命令将该分区导出为镜像文件：
+      以 `boot_a` 为例，使用 `dd` 命令将该分区导出为镜像文件:
       ```shell
       dd if=/dev/block/by-name/boot_a of=/sdcard/boot.img
       # 将 boot_a 分区导出到 /sdcard 目录中，文件名为 boot.img
       ```
-      命令说明：\
+      命令说明:\
       `if= 为输入路径` `of= 为输出路径`
 
-      执行后将返回以下信息 (仅供参考)：
+      执行后将返回以下信息 (仅供参考) :
       ```
       131072+0 records in
       131072+0 records out
@@ -291,11 +290,11 @@ DocNotice:
       ```
    6. 计算 SHA256
 
-      建议对导出的镜像进行校验，以便后续验证完整性：
+      建议对导出的镜像进行校验，以便后续验证完整性:
       ```shell
       sha256sum /sdcard/boot.img
       ```
-      示例输出：
+      示例输出:
       ```
       c06eaeed4b42ab8ee5d299ae57248af8ef4b5cafadad4ec645ea475f8adac1a8  /sdcard/boot.img
       ```
@@ -307,11 +306,11 @@ DocNotice:
       ```
       ::: info 说明
       你可能需要执行两次 exit 才能完全退出 shell。
-      - 第一次退出的是 root 权限下的 shell (`#` 提示符)
+      - 第一次退出的是 Root 权限下的 shell (`#` 提示符)
       - 第二次退出的是普通用户 shell (`$` 提示符)
       :::
 
-      退出后使用 `adb pull` 命令来将镜像给导出至电脑上:
+      退出后使用 `adb pull` 命令来将镜像导出至电脑:
       ```shell
       adb pull <镜像在盒子上的位置> <镜像在你电脑上的导出位置>
       # 下方为一个使用示例
@@ -333,12 +332,12 @@ DocNotice:
 建议将所有镜像与校验值妥善保存，以便在系统损坏或刷机失败时用于恢复。
 
 ## 删除已安装的 GSI <Badge type="tip" text="可选操作" />
-> [!WARNING]重要提醒
+> [!WARNING] 重要提醒
 > 删除已安装的 GSI 会清除对应用户空间中的所有内容。
 >
 > 在继续操作前，请确认你**已备份 GSI 内的重要文件**。
 
-如果你后续不再打算使用这次安装的 GSI，你可以执行下列命令来删除已安装的 GSI ：
+如果你后续不再打算使用这次安装的 GSI，你可以执行下列命令来删除已安装的 GSI :
 ```shell
 # 这两条命令中的任意一条都可以删除 GSI，请根据自己的实际情况来进行选择
 # 通过 ADB :

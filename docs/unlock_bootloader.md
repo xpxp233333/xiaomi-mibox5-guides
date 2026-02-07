@@ -6,11 +6,11 @@ DocNotice:
   buttontext: '我已了解，不再提醒'
 ---
 
-#  解除 Bootloader 锁定
+# 解除 Bootloader 锁定
 此文档介绍了如何解除 小米盒子 5 (MOB2MB-5P) 的 Bootloader 锁定。
 
 > [!CAUTION] 操作前必读
-> 解除 Bootloader 锁定将会导致设备面临各类安全风险，并可能对设备造成不可预估的影响，可能导致：
+> 解除 Bootloader 锁定将会导致设备面临各类安全风险，并可能对设备造成不可预估的影响，可能导致:
 > - 硬件损坏
 > - 设备永久性变砖
 > - 失去官方保修资格
@@ -29,7 +29,7 @@ DocNotice:
 - [启用 ADB 调试 功能](#启用-adb-调试-功能)
 - [连接电脑并授权 ADB](#连接电脑并授权-adb)
 - [打开 OEM 解锁 选项](#打开-oem-解锁-选项)
-- [进入 Fastboot 模式并解锁 Bootloader](#进入-fastboot-模式并解锁-bootloader)
+- [进入 Fastboot 模式并解除 Bootloader 锁定](#进入-fastboot-模式并解除-bootloader-锁定)
 - [额外内容: 重新锁定 Bootloader](#额外内容-重新锁定-bootloader) <Badge type="tip" text="可选操作" />
 
 ::: info 说明:
@@ -56,12 +56,12 @@ DocNotice:
 > 此文档中出现的所有命令输出示例仅供参考，请以实际情况为准。
 
 ## 前置要求
-- 小米盒子 5 (MOB2MB-5P) 一台（未解除 Bootloader 锁定）
-- 一台电脑：Windows / Linux / macOS 均可
+- 小米盒子 5 (MOB2MB-5P) 一台 (未解除 Bootloader 锁定)
+- 一台电脑: Windows / Linux / macOS 均可
 - 一条可靠的 USB 数据线 (请确保线缆为高质量数据线，而非仅支持充电的线缆。)
-   - 若盒子与电脑均为 USB-A 接口，请使用 USB-A 公对 USB-A 公 数据线。
-   - 若电脑拥有 USB-C 接口，也可使用 USB-A 公对 USB-C 公 数据线（即常见的手机数据线）。
-- 电脑已安装下列工具：
+   - 若盒子与电脑均为 USB-A 接口，请使用 USB-A 公对 USB-A 公数据线。
+   - 若电脑拥有 USB-C 接口，也可使用 USB-A 公对 USB-C 公数据线 (即常见的手机数据线) 。
+- 电脑已安装下列工具:
    - [ADB & Fastboot 工具](https://developer.android.com/tools/releases/platform-tools)
    - **保证相关工具 / 驱动运行正常**
 
@@ -97,14 +97,14 @@ DocNotice:
 > [!NOTE]
 > 开始前，请确保电脑已正确安装并配置了 ADB 工具。
 >
-> 如需确认 adb 是否可用，请运行以下命令：
+> 如需确认 adb 是否可用，请运行以下命令:
 > ```shell
 > adb --version
 > ```
 > 如果能正常显示版本号，即表示 ADB 已正确安装。如果没看到版本号，请确保 ADB 已正确安装。
 
 1. 用 USB 数据线连接盒子与电脑
-2. 在电脑终端中执行以下命令：
+2. 在电脑终端中执行以下命令:
    ```shell
    adb devices
    # 期望返回的信息 - 已允许调试
@@ -129,7 +129,7 @@ DocNotice:
 :::
 
 > [!TIP]
-> 没有看到对话框？ 请尝试按照以下几个方向来检查：
+> 没有看到对话框？ 请尝试按照以下几个方向来检查:
 >
 > * 检查是否退出了设置应用。
 > * 检查 ADB 调试是否被打开。
@@ -156,7 +156,7 @@ DocNotice:
       <img height="300" src="./images/screenshots/app_settings_developmentactivity_3.png">
 
 ## 进入 Fastboot 模式并解除 Bootloader 锁定
-> [!WARNING] 重要提醒：
+> [!WARNING] 重要提醒:
 > 解除 Bootloader 锁定将清除设备上的所有数据。
 >
 > 在继续操作前，**请务必备份所有重要数据**。
@@ -164,7 +164,7 @@ DocNotice:
 > [!NOTE] 注意
 > 开始前，请确保电脑已正确安装并配置了 Fastboot 工具。
 >
-> 如需确认 fastboot 是否可用，请运行以下命令：
+> 如需确认 fastboot 是否可用，请运行以下命令:
 > ```shell
 > fastboot --version
 > ```
@@ -216,14 +216,14 @@ DocNotice:
 至此，你已经完成所有解锁过程
 
 > [!TIP]
-> 输入 fastboot 相关命令后发现提示`< waiting for any device >` ?
+> 输入 fastboot 相关命令后发现提示 `< waiting for any device >` ?
 >
-> 请尝试按照以下几个方向来检查：
+> 请尝试按照以下几个方向来检查:
 >
 > * 检查设备是否进入了 Fastboot 模式。
 > * 检查 USB 数据线和驱动工作正常。
 
-### 额外信息：示例输出（仅供参考）
+### 额外信息: 示例输出 (仅供参考)
 ::: details 点击此处来查看
 ### **注意**
 以下为解锁过程中典型的命令输出示例，部分信息 (如序列号、时间、版本号) 仅供参考，请以实际情况为准。
@@ -288,18 +288,18 @@ Finished. Total time: 0.002s
 
 ## 额外内容: 重新锁定 Bootloader <Badge type="tip" text="可选操作" />
 > [!CAUTION] 
-> 如果你刷入的系统不是**完全匹配设备原厂签名**的版本（例如修改过的 system、boot、vbmeta、vendor 等），再次锁定 Bootloader 将会**导致设备无法启动**。  
+> 如果你刷入的系统不是**完全匹配设备原厂签名**的版本 (例如修改过的 system、boot、vbmeta、vendor 等) ，再次锁定 Bootloader 将会**导致设备无法启动**。  
 > 
-> 请在执行前确认：
+> 请在执行前确认:
 > - 当前系统是官方或经过正确签名的版本；
-> - 已恢复相关分区的原始状态（包括但不限于 vbmeta、boot、system、vendor 等）；
+> - 已恢复相关分区的原始状态 (包括但不限于 vbmeta、boot、system、vendor 等) ；
 > - 你确实有重新锁定 Bootloader 的需求。
 
 > [!WARNING] 重要提醒
 > 重新锁定 Bootloader 将清除设备上的所有数据。\
 > 在继续操作前，**请务必备份所有重要数据**。
 
-如果你确定要重新锁定 Bootloader，请在 Fastboot 模式中执行以下命令：
+如果你确定要重新锁定 Bootloader，请在 Fastboot 模式中执行以下命令:
 ```shell
 fastboot flashing lock      # 锁定 Bootloader
 fastboot getvar unlocked    # 验证是否成功锁定 (返回 unlocked: no 则代表已成功锁定)

@@ -23,19 +23,19 @@ DocNotice:
 - [主板照片](#主板照片)
 - [内部部分元器件特写](#内部部分元器件特写)
 - [Android 分区信息](#android-分区信息)
-- [UART连接信息](#uart连接信息)
+- [UART 连接信息](#uart-连接信息)
 
 ## 规格参数
-- 操作系统：Xiaomi HyperOS (Android 14)
-- SoC：Amlogic S905X5M
-- CPU：四核 Cortex-A55 (最高主频 2.5 GHz)
-- GPU：ARM Mali-G310 V2
-- RAM：2GB
-- ROM：32GB
-- 蓝牙：5.2
-- 无线网络：Wi-Fi 6 (2.4GHz/5GHz)
-- 尺寸：97 x 97.1 x 17 mm
-- 重量：91.6 g
+- 操作系统: Xiaomi HyperOS (Android 14)
+- SoC: Amlogic S905X5M
+- CPU: 四核 Cortex-A55 (最高主频 2.5 GHz)
+- GPU: ARM Mali-G310 V2
+- RAM: 2GB
+- ROM: 32GB
+- 蓝牙: 5.2
+- 无线网络: Wi-Fi 6 (2.4GHz/5GHz)
+- 尺寸: 97 x 97.1 x 17 mm
+- 重量: 91.6 g
 - USB 2.0 x 1
 - HDMI x 1
 
@@ -44,13 +44,13 @@ DocNotice:
 :::
 
 ## 额外信息
-- 设备代号：darkknight
-- 系统内显示型号：MiTV-AZFU0
-- 出厂系统版本：UD2A.240505.001.W1.OS2.0.7.0.UZFAABX
-- 出厂内核版本：5.15.153-android14-11-gf80308c320bc-abOS2.0.7.0.UZFAABX
+- 设备代号: darkknight
+- 系统内显示型号: MiTV-AZFU0
+- 出厂系统版本: UD2A.240505.001.W1.OS2.0.7.0.UZFAABX
+- 出厂内核版本: 5.15.153-android14-11-gf80308c320bc-abOS2.0.7.0.UZFAABX
 - 指纹: Xiaomi/darkknight/darkknight:14/UD2A.240505.001.W1/OS2.0.7.0.UZFAABX:user/release-keys
-- 出厂安全补丁级别：2024-11-01
-- 出厂 Bootloader 版本：01.01.250317.222939
+- 出厂安全补丁级别: 2024-11-01
+- 出厂 Bootloader 版本: 01.01.250317.222939
 
 ::: info 说明
 此处的信息均来自于作者自己的设备，不同生产批次或销售渠道的设备，其预装的系统版本可能存在差异，相关内容仅供参考，请以实际情况为准。
@@ -91,23 +91,23 @@ DocNotice:
 
 ## 内部部分元器件特写
 
-### SoC：晶晨 S905X5M
-::: details 查看 SOC 特写
+### SoC: 晶晨 S905X5M
+::: details 查看 SoC 特写
 <img height="500" src="./images/device/soc.png">
 :::
 
-### eMMC：长江存储 YMEC6A2TB1A2C3
+### eMMC: 长江存储 YMEC6A2TB1A2C3
 ::: details 查看 eMMC 特写
 <img height="500" src="./images/device/emmc.png">
 :::
 
-### RAM：南亚 NT5AD512M16C4-JR
+### RAM: 南亚 NT5AD512M16C4-JR
 ::: details 查看 RAM 特写
 <img height="500" src="./images/device/ram.png">
 :::
 
-### Wifi+BT模块：欧智通 K265B-UU
-::: details 查看 Wifi+BT模块 特写
+### Wi-Fi + BT 模块: 欧智通 K265B-UU
+::: details 查看 Wi-Fi + BT 模块 特写
 <img height="500" src="./images/device/wifi_bt_module.png">
 :::
 
@@ -313,7 +313,7 @@ $ blockdev --getsize64 /dev/block/mmcblk0boot1
 ```
 :::
 
-## UART连接信息
+## UART 连接信息
 > [!WARNING] 
 > 不同生产批次或销售渠道的设备其行为和相关定义可能会有所不同，此处提供的信息仅供参考，请以实际情况为准。 
 >

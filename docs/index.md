@@ -6,8 +6,8 @@ DocNotice:
   text: '<p>此处列出的文档均使用了 AI 技术来进行润色处理，相关内容已经过检查。</p><p>若无法接受 AI 辅助，请勿参考除<a href="/xiaomi-mibox5-guides/#官方页面">官方页面</a>部分以外的任何内容。</p>'
 ---
 
-# 小米盒子5 (MOB2MB-5P)
-此文档记录了小米盒子5 (MOB2MB-5P) 的部分信息\
+# 小米盒子 5 (MOB2MB-5P)
+此文档记录了 小米盒子 5 (MOB2MB-5P) 的部分信息\
 如硬件信息、实机照片、拆机照片、UART 连接信息、Android 分区表、如何 Root 等相关信息
 
 > [!NOTE]
@@ -24,7 +24,7 @@ DocNotice:
 - [主板照片](./hardware#主板照片)
 - [内部部分元器件特写](./hardware#内部部分元器件特写)
 - [Android 分区信息](./hardware#android-分区信息)
-- [UART连接信息](./hardware#uart连接信息)
+- [UART 连接信息](./hardware#uart-连接信息)
 
 > [!CAUTION] 警告
 > 下方列出的部分内容涉及设备底层操作 (如解锁 Bootloader、修改系统分区等) ，存在较高风险，并可能对设备造成不可预估的影响，可能导致：
@@ -47,7 +47,7 @@ DocNotice:
 - [启用 ADB 调试 功能](./unlock_bootloader#启用-adb-调试-功能)
 - [连接电脑并授权 ADB](./unlock_bootloader#连接电脑并授权-adb)
 - [打开 OEM 解锁 选项](./unlock_bootloader#打开-oem-解锁-选项)
-- [进入 Fastboot 模式并解锁 Bootloader](./unlock_bootloader#进入-fastboot-模式并解锁-bootloader)
+- [进入 Fastboot 模式并解除 Bootloader 锁定](./unlock_bootloader#进入-fastboot-模式并解除-bootloader-锁定)
 - [额外内容: 重新锁定 Bootloader](./unlock_bootloader#额外内容-重新锁定-bootloader) <Badge type="tip" text="可选操作" />
 
 ### 通过 DSU 来备份分区 <Badge type="danger" text="谨慎操作" />
